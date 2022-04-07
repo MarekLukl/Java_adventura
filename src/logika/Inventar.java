@@ -14,7 +14,7 @@ public class Inventar {
         return true;
     }
     public Map<String, Vec> getInventar(){return inventar;}
-
+    // komentar
     public static String getStavPenezenky(Inventar inventar){
         String stavPenezenky = "";
         if(inventar.getInventar()==null){return "jsi švorc";}
