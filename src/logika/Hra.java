@@ -28,7 +28,7 @@ public class Hra implements IHra {
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
         platnePrikazy.vlozPrikaz((new PrikazVezmi(inventar, this)));
         platnePrikazy.vlozPrikaz(new PrikazPouzij(inventar,this));
-
+        Inventar inventar = new Inventar();
     }
 
     /**
