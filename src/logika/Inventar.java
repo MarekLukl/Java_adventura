@@ -13,11 +13,19 @@ public class Inventar {
         inventar.put(nazevVeci, vec);
         return true;
     }
-    public Map<String, Vec> getInventar(){return inventar;}
-    // komentar
+    public Map<String, Vec> getInventar(){
+        if(inventar==null){
+        throw new IllegalArgumentException();
+    }
+        return inventar;
+    }
     public static String getStavPenezenky(Inventar inventar){
         String stavPenezenky = "";
-        if(inventar.getInventar()==null){return "jsi švorc";}
+        try {
+            inventar.getInventar();
+        }catch (IllegalArgumentException ex) {
+            System.out.println("Jsi švorc");
+        }
 
         for(String s: inventar.getInventar().keySet()){
             if(inventar.getInventar().get(s).getNazev()=="euro"){

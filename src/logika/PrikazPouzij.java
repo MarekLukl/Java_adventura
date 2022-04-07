@@ -45,7 +45,6 @@ public class PrikazPouzij implements IPrikaz{
         while(!(vyber.equals("3"))){
             vyber = sc.nextLine();
             if(vyber.equals("1")){
-                System.out.println("funguje");
                 Vec bageta = new Vec("bageta",true,false,"jidlo");
                 inventar.vlozitDoInvent(bageta.getNazev(),bageta);
                 break;
