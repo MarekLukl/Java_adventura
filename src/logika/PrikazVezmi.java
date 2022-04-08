@@ -23,8 +23,17 @@ public class PrikazVezmi implements IPrikaz {
         if(vec == null){
             return "Taková věc v této místnosti není." + "\n" + prostor.dlouhyPopis();
         } else if(vec.lzeVzit()){
-            inventar.vlozitDoInvent(vec.getNazev(), vec);
+            if(vec.getTyp()=="penize"){
+                if(vec.getNazev()=="euro"){
+                    vec.upravitMnozstvi(inventar,vec.getMnozstvi(),vec.getNazev());
+                }else if (vec.getNazev()=="rubly"){
+                    vec.upravitMnozstvi(inventar,vec.getMnozstvi(),vec.getNazev());
+                }
+            }else{
+                inventar.vlozitDoInvent(vec.getNazev(), vec);
+            }
             prostor.odstranPredmet(vec);
+            inventar.vypisInventare();
             return "Vzal jsi předmět: " + vec.getNazev();
         }
 

@@ -15,6 +15,7 @@ package logika;
 public class HerniPlan {
     
     private Prostor aktualniProstor;
+    private Inventar inventar;
     
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -58,21 +59,12 @@ public class HerniPlan {
         Vec pistol = new Vec("pistol",true, false, "zbran");
         Vec euro = new Vec("euro",true,false,"penize");
         euro.setMnozstvi(100);
-        Vec rubly = new Vec("rublů",true,false,"penize");
-        rubly.setMnozstvi(0);
+        Vec rubly = new Vec("rubly",true,false,"penize");
         Vec automatNaJidlo = new Vec("automat_na_jídlo", false, true,"stroj");
         Vec automatNaSmenu = new Vec("exchange_automat",false,true,"stroj");
         Vec automatNaGamble = new Vec("gambling_automat",false,true,"stroj");
         Vec desertEagle = new Vec("desert_eagle",true,false,"zbran");
         Vec ak47 = new Vec("AK-47",true,false,"zbran");
-
-        vstupniHala.pridejVec(automatNaJidlo);
-        satna.pridejVec(euro);
-        satna.pridejVec(pistol);
-        spolecMistnost.pridejVec(automatNaGamble);
-        toalety.pridejVec(automatNaSmenu);
-        zbrojnice.pridejVec(desertEagle);
-        zbrojnice.pridejVec(ak47);
 
         vstupniHala.pridejVec(automatNaJidlo);
         satna.pridejVec(euro);

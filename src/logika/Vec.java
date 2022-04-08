@@ -22,6 +22,11 @@ public class Vec {
 
     public void setMnozstvi(int mnozstvi) {this.mnozstvi = mnozstvi;}
 
+    public void upravitMnozstvi(Inventar inventar, int mnozstvi, String nazevMeny){
+        inventar.getVec(nazevMeny).setMnozstvi(inventar.getVec(nazevMeny)
+                .getMnozstvi()+ mnozstvi);
+    }
+
     public String getTyp() {return typ;}
 
     public boolean lzeVzit (){return zvednutelne;}

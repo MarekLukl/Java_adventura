@@ -17,13 +17,21 @@ public class Inventar {
 
     public Map<String, Vec> getInventar(){return inventar;}
 
+    public void vypisInventare(){
+        String celyInventar = "";
+        for(String s: Inventar.inventar.keySet()){
+            celyInventar += "(" + inventar.get(s).getMnozstvi() + ")" + inventar.get(s).getNazev() + " ";
+        }
+        System.out.println("Tvůj inventář: " + celyInventar);
+    }
+
     public Vec getVec(String nazev) {
         if (inventar.containsKey(nazev)) {
             return inventar.get(nazev);
         }
         return null;
     }
-    public static String getStavPenezenky(Inventar inventar){
+    public static String getStavPenezenky(){
         String stavPenezenky = "";
         if (Inventar.inventar.isEmpty()||!(Inventar.inventar.containsKey("euro")) && !(Inventar.inventar.containsKey("rubly"))) {
             return "Jsi švorc";
@@ -31,10 +39,10 @@ public class Inventar {
 
         for(String s: Inventar.inventar.keySet()){
             if(Inventar.inventar.get(s).getNazev() == "euro"){
-                stavPenezenky += "euro" + "(" + Inventar.inventar.get(s).getMnozstvi() + ")" + "\n";
+                stavPenezenky +=  "(" + Inventar.inventar.get(s).getMnozstvi() + ")" + "euro" + " ";
             }
             else if(Inventar.inventar.get(s).getNazev() == "rubly"){
-                stavPenezenky += "     " + Inventar.inventar.get(s).getMnozstvi() + "rublů";
+                stavPenezenky +="(" + Inventar.inventar.get(s).getMnozstvi() + ")" + "rublů" + " ";
             }
         }
         return  stavPenezenky;
