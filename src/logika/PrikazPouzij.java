@@ -102,6 +102,7 @@ public class PrikazPouzij implements IPrikaz{
         boolean nesplneno = true;
 
         if(mena ==1){
+
             int maxEur = (int) Math.round((inventar.getVec("rubly").
                     getMnozstvi())* 0.01); //vypočítaná a zaokrouhlená maximální hodnota vlastněných rublů v eurech
             System.out.println("Kolik euro chceš? Maximálně: " + maxEur);

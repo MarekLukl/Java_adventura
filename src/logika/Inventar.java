@@ -9,16 +9,14 @@ public class Inventar {
     public Inventar() {
         inventar = new HashMap<String, Vec>();
     }
+
     public static boolean vlozitDoInvent (String nazevVeci, Vec vec){
         inventar.put(nazevVeci, vec);
         return true;
     }
-    public Map<String, Vec> getInventar(){
-        if(inventar==null){
-        throw new IllegalArgumentException();
-    }
-        return inventar;
-    }
+
+    public Map<String, Vec> getInventar(){return inventar;}
+
     public Vec getVec(String nazev) {
         if (inventar.containsKey(nazev)) {
             return inventar.get(nazev);
