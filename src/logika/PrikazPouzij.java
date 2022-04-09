@@ -31,7 +31,7 @@ public class PrikazPouzij implements IPrikaz{
             }else if(vec.getNazev()=="exchange_automat"){
                 uzitExchangeAutomat();
             }else if(vec.getNazev()=="gambling_automat"){
-
+                uzitGamblingAutomat();
             }
 
             return "Stav tvé peněženky: " + Inventar.getStavPenezenky();
@@ -44,6 +44,7 @@ public class PrikazPouzij implements IPrikaz{
     public String getNazev() {
         return NAZEV;
     }
+
     public void uzitAutomatJidlo(){
         Scanner sc = new Scanner(System.in);
         System.out.println("bageta(20hp) stojí 5 euro" + "\n" + "banán(50hp) stojí 10 euro");
@@ -148,5 +149,88 @@ public class PrikazPouzij implements IPrikaz{
         } catch (NumberFormatException e) {
             return null;
         }
+    }
+    public void uzitGamblingAutomat(){
+        System.out.println("Vítej gamblere, tato hra funguje následovně, nejprve si vybereš kolik chceš vsadit." +
+                "\n" + "Poté si tipneš jestli náhodně vygenerované číslo bude liché nebu sudé," +
+                        "\n" + "pokud se trefíš obdržíš dvakrát tolik co si vsadil. Hodně štestí (a peněz)!!");
+        Scanner sc = new Scanner(System.in);
+        boolean konec = false;
+        int sazenaCastka;
+        String vybranaStrana;
+        while(!konec){
+            System.out.println("Stav vaší peněženky: " + inventar.getStavPenezenky() + "\n" +
+                    "sázet můžete jen rubly");
+            sazenaCastka = sazenaCastka();
+            vybranaStrana = vyberStrany();
+            if(vybranaStrana.equals(3)){
+                konec = true;
+                continue;
+            }
+            gamble(sazenaCastka, vybranaStrana);
+            konec = pokracovatGamble();
+        }
+        System.out.println("Konec interakce s gambling automatem.");
+    }
+    public int sazenaCastka(){
+        Scanner sc = new Scanner(System.in);
+        boolean konec = false;
+        int castka = 0;
+        String input;
+        while(!konec){
+            System.out.println("Zadej kolik chceš vsadit: " + "\n" + "(pokud nic zadej 'O')");
+            input = sc.nextLine();
+            if(parseIntOrNull(input)==null){
+                System.out.println("musíš zadat celočíselné číslo");
+                continue;
+            }
+            castka = parseIntOrNull(input);
+            if(castka > inventar.getVec("rubly").getMnozstvi()){
+                System.out.println("Na to nemáš. Maximálně: " + inventar.getVec("rubly").getMnozstvi());
+                continue;
+            }else{
+                konec = true;
+            }
+        }
+        return castka;
+    }
+    public String vyberStrany(){
+        Scanner sc = new Scanner(System.in);
+        String strana = "";
+        boolean konec = false;
+        while(!konec){
+            System.out.println("Vyber si stranu, pro liché napiš '1'   pro sudé '2'   pro konec '3'");
+            strana = sc.nextLine();
+            if(strana.equals("1") || strana.equals("2") || strana.equals("3")){
+                konec = true;
+            }
+        }
+        return strana;
+    }
+    public void gamble(int sazenaCastka, String vybranaStrana){
+        int randomCislo = getRandomCislo(1, 100);
+        System.out.println("Výsledné číslo je: " + randomCislo);
+        boolean sudost = (randomCislo % 2 == 0);
+        if((sudost && vybranaStrana.equals("2") ||
+        (!sudost && vybranaStrana.equals("1")))){ // zjišťuje zda se odhad sudosti shoduje se sudostí výsledného náhodného čísla
+            System.out.println("Vyhráli jste " + sazenaCastka*2 + "!!" + "\n");
+            inventar.getVec("rubly").upravitMnozstvi(inventar,sazenaCastka,"rubly");
+        }else{
+            System.out.println("Prohráli jste." +"\n" + "Příště to určitě vyjde!" + "\n");
+            inventar.getVec("rubly").upravitMnozstvi(inventar,-sazenaCastka,"rubly");
+        }
+    }
+
+    public int getRandomCislo(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+    public boolean pokracovatGamble(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("pro konec napiš '1'   pro pokračování cokoliv jiného: ");
+        String input = sc.nextLine();
+        if(input.equals("1")){
+            return true;
+        }
+        return false;
     }
 }
