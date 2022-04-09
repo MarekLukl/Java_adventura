@@ -24,11 +24,13 @@ public class Hra implements IHra {
         herniPlan = new HerniPlan();
         platnePrikazy = new SeznamPrikazu();
         Inventar inventar = new Inventar();
+        Hrac hrac = new Hrac();
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy));
         platnePrikazy.vlozPrikaz(new PrikazJdi(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
         platnePrikazy.vlozPrikaz((new PrikazVezmi(inventar, this)));
         platnePrikazy.vlozPrikaz(new PrikazPouzij(inventar,this));
+        platnePrikazy.vlozPrikaz(new PrikazUtok(this,hrac));
 
         //vložení rublů a euro do inventáře, ale v množství 0
         Vec euro = new Vec("euro",true,false,"penize");

@@ -74,6 +74,14 @@ public class HerniPlan {
         zbrojnice.pridejVec(desertEagle);
         zbrojnice.pridejVec(ak47);
 
+        Postava straz1 = new Postava("stráž1",40,5);
+        Postava straz2 = new Postava("stráž2",40,6);
+        Postava straz3 = new Postava("stráž3",50,7);
+
+        spolecMistnost.pridejPostavu(straz1);
+        spolecMistnost.pridejPostavu(straz2);
+        spolecMistnost.pridejPostavu(straz3);
+
         aktualniProstor = vstupniHala;  // hra začíná ve vstupní hale
     }
     

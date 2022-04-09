@@ -1,13 +1,11 @@
 package logika;
 
-import java.util.Map;
 
 public class Vec {
     private String nazev;
     private int mnozstvi = 1;
     private final boolean zvednutelne;
     private final boolean pouzitelne;
-
     private final String typ;
 
     public Vec(String nazev, boolean zvednutelne, boolean pouzitelne, String typ) {

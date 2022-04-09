@@ -22,6 +22,7 @@ public class Prostor {
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
     private boolean zamceno;
     private Map<String, Vec> seznamVeci;
+    private Map<String, Postava> seznamPostav;
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
@@ -37,6 +38,7 @@ public class Prostor {
         vychody = new HashSet<>();
         this.zamceno = zamceno;
         seznamVeci = new HashMap<String, Vec>();
+        seznamPostav = new HashMap<String, Postava>();
     }
 
     /**
@@ -170,7 +172,7 @@ public class Prostor {
         return Collections.unmodifiableCollection(vychody);
     }
 
-    public String vypisSeznamu() {
+    public String vypisSeznamuVeci() {
         String seznam1 = "";
         String seznam2 = " ";
         if (seznamVeci.isEmpty()) {
@@ -196,6 +198,12 @@ public class Prostor {
     public void odstranPredmet(Vec vec){seznamVeci.remove(vec.getNazev());}
 
     public void pridejVec(Vec vec){seznamVeci.put(vec.getNazev(),vec);}
+
+    public void pridejPostavu(Postava postava){seznamPostav.put(postava.getNazev(), postava);}
+
+    public void odeberPostavu(Postava postava){seznamPostav.remove(postava.getNazev(), postava);}
+
+    public Map<String, Postava> getSeznamPostav() {return seznamPostav;}
 }
 
 
