@@ -54,12 +54,14 @@ public class PrikazPouzij implements IPrikaz{
             vyber = sc.nextLine();
             if(vyber.equals("1")){
                 Vec bageta = new Vec("bageta",true,false,"jidlo");
+                bageta.setHp(20);
                 if(!(inventar.nakup(5,"euro"))){break;}
                 inventar.vlozitDoInvent(bageta.getNazev(),bageta);
                 System.out.println("Bageta koupena");
                 break;
             }else if(vyber.equals("2")){
                 Vec banan = new Vec("banán",true,false,"jidlo");
+                banan.setHp(50);
                 if((!inventar.nakup(10,"euro"))){break;}
                 inventar.vlozitDoInvent(banan.getNazev(),banan);
                 System.out.println("Banán koupen");

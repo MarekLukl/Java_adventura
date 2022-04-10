@@ -182,11 +182,27 @@ public class Prostor {
             seznam1 += " " + seznamVeci.get(s).getNazev();
             if(seznamVeci.get(s).getTyp()=="penize"){
                 seznam1 += "(" + seznamVeci.get(s).getMnozstvi() + ")";
+            }else if(seznamVeci.get(s).getTyp()=="zbran"){
+                seznam1 += "(" + seznamVeci.get(s).getDamage() + " damage)";
+            }else if(seznamVeci.get(s).getTyp()=="jidlo"){
+                seznam1 += "(" + seznamVeci.get(s).getHp() + "hp)";
             }
             seznam1 += ",";
         }
         seznam2 = seznam1.substring(0, seznam1.length()-1);
         return "V místnosti je:" + seznam2;
+    }
+    public String vypisSeznamuPostav(){
+        if(seznamPostav.size()==0){
+            return "";
+        }
+        String seznam1 = "\n" + "Osoby v místnosti: ";
+        for(String s: seznamPostav.keySet()){
+            seznam1 += " " + seznamPostav.get(s).getNazev() +
+                    " damage: " + seznamPostav.get(s).getDamage() + " hp: " + seznamPostav.get(s).getHp() + ",";
+        }
+        String  seznam2 =  seznam1.substring(0, seznam1.length()-1);
+        return seznam2;
     }
     public Vec getVec(String nazevVeci) {
         if (seznamVeci.containsKey(nazevVeci)) {
@@ -200,8 +216,6 @@ public class Prostor {
     public void pridejVec(Vec vec){seznamVeci.put(vec.getNazev(),vec);}
 
     public void pridejPostavu(Postava postava){seznamPostav.put(postava.getNazev(), postava);}
-
-    public void odeberPostavu(Postava postava){seznamPostav.remove(postava.getNazev(), postava);}
 
     public Map<String, Postava> getSeznamPostav() {return seznamPostav;}
 }

@@ -5,10 +5,12 @@ public class PrikazVezmi implements IPrikaz {
     private static final String NAZEV = "vezmi";
     private final Inventar inventar;
     private final Hra hra;
+    private final Hrac hrac;
 
-    public PrikazVezmi(Inventar inventar, Hra hra) {
+    public PrikazVezmi(Inventar inventar, Hra hra, Hrac hrac) {
         this.inventar = inventar;
         this.hra = hra;
+        this.hrac = hrac;
     }
 
     @Override
@@ -24,11 +26,9 @@ public class PrikazVezmi implements IPrikaz {
             return "Taková věc v této místnosti není." + "\n" + prostor.dlouhyPopis();
         } else if(vec.lzeVzit()){
             if(vec.getTyp()=="penize"){
-                if(vec.getNazev()=="euro"){
-                    vec.upravitMnozstvi(inventar,vec.getMnozstvi(),vec.getNazev());
-                }else if (vec.getNazev()=="rubly"){
-                    vec.upravitMnozstvi(inventar,vec.getMnozstvi(),vec.getNazev());
-                }
+                pridaniPenez(vec.getNazev(),vec);
+            }else if(vec.getTyp()=="zbran"){
+            zmenaDamage(vec);
             }else{
                 inventar.vlozitDoInvent(vec.getNazev(), vec);
             }
@@ -43,5 +43,19 @@ public class PrikazVezmi implements IPrikaz {
     @Override
     public String getNazev() {
         return NAZEV;
+    }
+
+    public void pridaniPenez(String mena, Vec vec){
+        if(mena=="euro"){
+            vec.upravitMnozstvi(inventar,vec.getMnozstvi(),vec.getNazev());
+        }else if (mena=="rubly"){
+            vec.upravitMnozstvi(inventar,vec.getMnozstvi(),vec.getNazev());
+        }
+    }
+    public void zmenaDamage(Vec vec){
+        if(hrac.getDamage()<vec.getDamage()){
+            hrac.setDamage(vec.getDamage());
+        }
+        inventar.vlozitDoInvent(vec.getNazev(),vec);
     }
 }

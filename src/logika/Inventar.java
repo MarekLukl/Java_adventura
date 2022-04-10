@@ -4,18 +4,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventar {
+
     private static Map<String,Vec > inventar;
 
     public Inventar() {
         inventar = new HashMap<String, Vec>();
     }
 
+    public static Map<String, Vec> getInventar() {return inventar;}
+
     public static boolean vlozitDoInvent (String nazevVeci, Vec vec){
         inventar.put(nazevVeci, vec);
         return true;
     }
 
-    public Map<String, Vec> getInventar(){return inventar;}
+    public void odebratZInvent(String nazev){
+        inventar.remove(nazev);
+    }
 
     public void vypisInventare(){
         String celyInventar = "";

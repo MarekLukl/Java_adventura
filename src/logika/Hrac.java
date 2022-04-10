@@ -13,8 +13,6 @@ public class Hrac {
 
     public int getHp() {return hp;}
 
-    public int getMaxHp() {return maxHp;}
-
     public int getDamage() {return damage;}
 
     public void setHp(int hp) {this.hp = hp;}
@@ -23,5 +21,8 @@ public class Hrac {
 
     public void upravitHp(int hp){
         setHp(getHp()+hp);
+        if(getHp()>maxHp){
+            setHp(maxHp);
+        }
     }
 }

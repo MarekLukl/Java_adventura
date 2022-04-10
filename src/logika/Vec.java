@@ -3,7 +3,9 @@ package logika;
 
 public class Vec {
     private String nazev;
-    private int mnozstvi = 1;
+    private int mnozstvi;
+    private int damage;
+    private int hp;
     private final boolean zvednutelne;
     private final boolean pouzitelne;
     private final String typ;
@@ -30,6 +32,14 @@ public class Vec {
     public boolean lzeVzit (){return zvednutelne;}
 
     public boolean lzePouzit (){return  pouzitelne;}
+
+    public int getDamage() {return damage;}
+
+    public void setDamage(int damage) {this.damage = damage;}
+
+    public int getHp() {return hp;}
+
+    public void setHp(int hp) {this.hp = hp;}
 
     public boolean lzeBojovat (Vec vec){
         if(vec.typ == "boj"){

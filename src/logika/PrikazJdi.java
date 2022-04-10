@@ -46,7 +46,8 @@ public class PrikazJdi implements IPrikaz {
         }
         else {
             plan.setAktualniProstor(sousedniProstor);
-            return sousedniProstor.dlouhyPopis() + "\n" + sousedniProstor.vypisSeznamuVeci();
+            return sousedniProstor.dlouhyPopis() + "\n" + sousedniProstor.vypisSeznamuVeci() +
+                    sousedniProstor.vypisSeznamuPostav();
         }
     }
     

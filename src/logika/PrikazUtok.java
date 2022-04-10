@@ -37,7 +37,7 @@ public class PrikazUtok implements IPrikaz{
         }else{
             return "Tato postava v této místnosti není.";
         }
-        return "Konec boje.";
+        return "Konec kola.";
     }
 
     /**
@@ -52,12 +52,18 @@ public class PrikazUtok implements IPrikaz{
          seznamPostav.get(nazevPostavy).upravitHp(-hrac.getDamage());
          System.out.println("Útok na " + nazevPostavy + ", ubral si " + hrac.getDamage());
          if(seznamPostav.get(nazevPostavy).getHp()<1){  // pokud má postava menší hp než 1, odebere ji
+             System.out.println(nazevPostavy + " je mrtev");
              seznamPostav.remove(nazevPostavy);
          }
          for(String s: seznamPostav.keySet()){   // odebere damage každé postavy v seznamu od hp hráče
              hrac.upravitHp(-seznamPostav.get(s).getDamage());
-             System.out.println("Útok " + nazevPostavy + ",ubral ti " + seznamPostav.get(s).getDamage()
-                     + "\n" + "Tvoje hp: " + hrac.getHp());
+             System.out.println("Útok " + seznamPostav.get(s).getNazev() + ",ubral ti " +
+                     seznamPostav.get(s).getDamage() + "\n" + "Tvoje hp: " + hrac.getHp());
+             if(hrac.getHp()<1){
+                 System.out.println("Jsi mrtev." +  " Konec hry.");
+                 hra.setKonecHry(true);
+                 return;
+             }
          }
         for(String s: seznamPostav.keySet()){
             System.out.println(seznamPostav.get(s).getNazev() +

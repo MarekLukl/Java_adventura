@@ -57,6 +57,7 @@ public class HerniPlan {
         komnata.setVychod(chodba);
 
         Vec pistol = new Vec("pistol",true, false, "zbran");
+        pistol.setDamage(20);
         Vec euro = new Vec("euro",true,false,"penize");
         euro.setMnozstvi(100);
         Vec rubly = new Vec("rubly",true,false,"penize");
@@ -64,7 +65,9 @@ public class HerniPlan {
         Vec automatNaSmenu = new Vec("exchange_automat",false,true,"stroj");
         Vec automatNaGamble = new Vec("gambling_automat",false,true,"stroj");
         Vec desertEagle = new Vec("desert_eagle",true,false,"zbran");
+        desertEagle.setDamage(40);
         Vec ak47 = new Vec("AK-47",true,false,"zbran");
+        ak47.setDamage(50);
 
         vstupniHala.pridejVec(automatNaJidlo);
         satna.pridejVec(euro);
