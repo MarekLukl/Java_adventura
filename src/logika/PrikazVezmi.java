@@ -21,7 +21,9 @@ public class PrikazVezmi implements IPrikaz {
         String nazevVeci = parametry[0];
         Prostor prostor = hra.getHerniPlan().getAktualniProstor();
         Vec vec = prostor.getVec(nazevVeci);
-
+        if(inventar.getInventar().size()>5){
+            return "Uneseš jen 4 věci (kromě peněz) musíš něco položit";
+        }
         if(vec == null){
             return "Taková věc v této místnosti není." + "\n" + prostor.dlouhyPopis();
         } else if(vec.lzeVzit()){
@@ -33,8 +35,7 @@ public class PrikazVezmi implements IPrikaz {
                 inventar.vlozitDoInvent(vec.getNazev(), vec);
             }
             prostor.odstranPredmet(vec);
-            inventar.vypisInventare();
-            return "Vzal jsi předmět: " + vec.getNazev();
+            return "Vzal jsi předmět: " + vec.getNazev() + "\n" + inventar.vypisInventare();
         }
 
         return null;

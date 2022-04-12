@@ -31,14 +31,14 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor vstupniHala = new Prostor("vstupní_hala","vsupní hala s automatem na bagety", false);
+        Prostor vstupniHala = new Prostor("vstupní_hala","rudá vsupní hala", false);
         Prostor satna = new Prostor("šatna", "smrdutá šatna",false);
-        Prostor spolecMistnost = new Prostor("společenská_místnost","společenská místnost se střážemi a automat na gambling", false);
+        Prostor spolecMistnost = new Prostor("společenská_místnost","společenská místnost pro volné chvíle ruských bratrů", false);
         Prostor toalety = new Prostor("toalety","voňavé toalety s automatem na směnu peněz", false);
         Prostor chodba = new Prostor("chodba","prázdná chodba",true);
-        Prostor vezeni = new Prostor("vězení","věznice pro Putinovu opozici", false);
+        Prostor vezeni = new Prostor("vězení","věznice pro Putinovu politickou opozici", false);
         Prostor zbrojnice = new Prostor("zbrojnice","zbrojnice s možností zakoupit si zbraně",false);
-        Prostor komnata = new Prostor("komnata","komnata s pozlacenými zdmi a nečetně obrazy Putina",true);
+        Prostor komnata = new Prostor("komnata","komnata s pozlacenými zdmi a nesčetně obrazy Putina",true);
         
         // přiřazují se průchody mezi prostory (sousedící prostory)
         vstupniHala.setVychod(satna);
@@ -80,10 +80,12 @@ public class HerniPlan {
         Postava straz1 = new Postava("stráž1",40,5);
         Postava straz2 = new Postava("stráž2",40,6);
         Postava straz3 = new Postava("stráž3",50,7);
+        Postava putin = new Postava("Putin",600, 16);
 
         spolecMistnost.pridejPostavu(straz1);
         spolecMistnost.pridejPostavu(straz2);
         spolecMistnost.pridejPostavu(straz3);
+        komnata.pridejPostavu(putin);
 
         aktualniProstor = vstupniHala;  // hra začíná ve vstupní hale
     }

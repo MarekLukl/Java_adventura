@@ -23,7 +23,8 @@ public class PrikazPouzij implements IPrikaz{
         Prostor prostor = hra.getHerniPlan().getAktualniProstor();
         Vec vec = prostor.getVec(nazevVeci);
         if(vec == null){
-            return "Taková věc v této místnosti není." + "\n" + prostor.dlouhyPopis();
+            return "Taková věc v této místnosti není." + "\n" + prostor.dlouhyPopis() + "\n" +
+                    prostor.vypisSeznamuVeci();
         } else if(vec.lzePouzit()){
 
             if(vec.getNazev()=="automat_na_jídlo"){
@@ -48,11 +49,19 @@ public class PrikazPouzij implements IPrikaz{
     public void uzitAutomatJidlo(){
         Scanner sc = new Scanner(System.in);
         System.out.println("bageta(20hp) stojí 5 euro" + "\n" + "banán(50hp) stojí 10 euro");
+        if(inventar.getInventar().size()>5){
+            System.out.println("Uneseš jen 4 věci (kromě peněz) musíš něco položit");
+            return;
+        }
         System.out.println("Pro koupi bagety napiště '1' pro koupi banánu napiště '2' pro konec nákupu napište '3'");
         String vyber ="";
         while(!(vyber.equals("3"))){
             vyber = sc.nextLine();
             if(vyber.equals("1")){
+                if(inventar.getInventar().containsKey("bageta")){
+                    System.out.println("Můžeš mít jen jednu bagetu.");
+                    break;
+                }
                 Vec bageta = new Vec("bageta",true,false,"jidlo");
                 bageta.setHp(20);
                 if(!(inventar.nakup(5,"euro"))){break;}
@@ -60,6 +69,10 @@ public class PrikazPouzij implements IPrikaz{
                 System.out.println("Bageta koupena");
                 break;
             }else if(vyber.equals("2")){
+                if(inventar.getInventar().containsKey("banán")){
+                    System.out.println("Můžeš mít jen jeden banán.");
+                    break;
+                }
                 Vec banan = new Vec("banán",true,false,"jidlo");
                 banan.setHp(50);
                 if((!inventar.nakup(10,"euro"))){break;}
@@ -95,7 +108,6 @@ public class PrikazPouzij implements IPrikaz{
             }
         }
         System.out.println("Konec interakce s exchange automatem");
-        inventar.vypisInventare();
     }
     public int pozadovanaCastka(int mena){
         Scanner sc = new Scanner(System.in);
@@ -164,8 +176,12 @@ public class PrikazPouzij implements IPrikaz{
             System.out.println("Stav vaší peněženky: " + inventar.getStavPenezenky() + "\n" +
                     "sázet můžete jen rubly");
             sazenaCastka = sazenaCastka();
+            //pokud sázená častka je nula ukončit interakci
+            if(sazenaCastka==0){
+                continue;
+            }
             vybranaStrana = vyberStrany();
-            if(vybranaStrana.equals(3)){
+            if(vybranaStrana.equals("3")){
                 konec = true;
                 continue;
             }
@@ -223,9 +239,10 @@ public class PrikazPouzij implements IPrikaz{
         }
     }
 
-    public int getRandomCislo(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min);
+    public static int getRandomCislo(int min, int max) {
+        return (int) Math.round(((Math.random() * (max - min)) + min));
     }
+
     public boolean pokracovatGamble(){
         Scanner sc = new Scanner(System.in);
         System.out.println("pro konec napiš '1'   pro pokračování cokoliv jiného: ");

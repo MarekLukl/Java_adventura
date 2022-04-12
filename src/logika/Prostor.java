@@ -55,6 +55,10 @@ public class Prostor {
         vychody.add(vedlejsi);
     }
 
+    public boolean getZamceno(){return zamceno;}
+
+    public void setZamceno(boolean zamceno){this.zamceno = zamceno;}
+
     /**
      * Metoda equals pro porovnání dvou prostorů. Překrývá se metoda equals ze
      * třídy Object. Dva prostory jsou shodné, pokud mají stejný název. Tato
@@ -176,7 +180,7 @@ public class Prostor {
         String seznam1 = "";
         String seznam2 = " ";
         if (seznamVeci.isEmpty()) {
-            return "V místnosti nic není";
+            return "Není tu nic k sebrání";
         }
         for(String s: seznamVeci.keySet()){
             seznam1 += " " + seznamVeci.get(s).getNazev();

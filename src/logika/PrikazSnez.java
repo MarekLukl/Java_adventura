@@ -31,8 +31,7 @@ public class PrikazSnez implements IPrikaz{
         Vec jidlo = inventar.getVec(nazevJidla);
 
         if(jidlo== null){
-            inventar.vypisInventare();
-            return "Takové jídlo nemáš";
+            return "Takové jídlo nemáš" + "\n" + inventar.vypisInventare();
         }
         hrac.upravitHp(jidlo.getHp());
         inventar.odebratZInvent(nazevJidla);

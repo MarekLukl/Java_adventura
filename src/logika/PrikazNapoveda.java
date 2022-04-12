@@ -12,17 +12,20 @@ public class PrikazNapoveda implements IPrikaz {
     
     private static final String NAZEV = "nápověda";
     private SeznamPrikazu platnePrikazy;
+    private final HerniPlan plan;
     
     
      /**
     *  Konstruktor třídy
-    *  
-    *  @param platnePrikazy seznam příkazů,
-    *                       které je možné ve hře použít,
-    *                       aby je nápověda mohla zobrazit uživateli. 
-    */    
-    public PrikazNapoveda(SeznamPrikazu platnePrikazy) {
+    *
+      * @param platnePrikazy seznam příkazů,
+      *                       které je možné ve hře použít,
+      *                       aby je nápověda mohla zobrazit uživateli.
+      * @param plan
+      */
+    public PrikazNapoveda(SeznamPrikazu platnePrikazy, HerniPlan plan) {
         this.platnePrikazy = platnePrikazy;
+        this.plan = plan;
     }
     
     /**
@@ -33,11 +36,15 @@ public class PrikazNapoveda implements IPrikaz {
      */
     @Override
     public String provedPrikaz(String... parametry) {
+        Prostor prostor = plan.getAktualniProstor();
         return "Tvým úkolem je vyzbrojit se a dostat se do komnaty\n"
         + "kde vykonáš spravedlnost na Putinovi.\n"
         + "\n"
         + "Můžeš zadat tyto příkazy:\n"
-        + platnePrikazy.vratNazvyPrikazu();
+        + platnePrikazy.vratNazvyPrikazu() + "\n"
+        + prostor.dlouhyPopis() + "\n"
+        + prostor.vypisSeznamuVeci() + "\n"
+        + prostor.vypisSeznamuPostav();
     }
     
      /**

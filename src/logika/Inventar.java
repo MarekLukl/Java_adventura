@@ -22,12 +22,20 @@ public class Inventar {
         inventar.remove(nazev);
     }
 
-    public void vypisInventare(){
+    public String vypisInventare(){
         String celyInventar = "";
-        for(String s: Inventar.inventar.keySet()){
-            celyInventar += "(" + inventar.get(s).getMnozstvi() + ")" + inventar.get(s).getNazev() + " ";
+        for(String s: Inventar.inventar.keySet()) {
+            if (inventar.get(s).getTyp().equals("penize")) {
+                celyInventar += inventar.get(s).getNazev() + "(" + inventar.get(s).getMnozstvi() + ")" + " ";
+            } else if (inventar.get(s).getTyp().equals("zbran")) {
+                celyInventar += inventar.get(s).getNazev() + "(" + inventar.get(s).getDamage() + " damage)" + " ";
+            } else if (inventar.get(s).getTyp().equals("jidlo")) {
+                celyInventar += inventar.get(s).getNazev() + "(" + inventar.get(s).getHp() + " hp)" + " ";
+            } else{
+                celyInventar += inventar.get(s).getNazev() + " ";
+            }
         }
-        System.out.println("Tvůj inventář: " + celyInventar);
+        return "Tvůj inventář: " + celyInventar;
     }
 
     public Vec getVec(String nazev) {
