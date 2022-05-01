@@ -1,5 +1,14 @@
 package logika;
 
+/**
+ *  Třída PrikazVezmi implementuje pro hru příkaz vezmi.
+ *  Tato třída je součástí jednoduché textové hry.
+ *  Přidá do invenáře věc a odebere ji z aktuálního prostoru.
+ *
+ * @author     Marek Lukl
+ *
+ */
+
 public class PrikazVezmi implements IPrikaz {
 
     private static final String NAZEV = "vezmi";
@@ -13,6 +22,13 @@ public class PrikazVezmi implements IPrikaz {
         this.hrac = hrac;
     }
 
+    /**
+     *  Zjistí zda si zadal co vzít, jestli je daná věc v akutálním prostoru a jestli se dá vzít.
+     *  Pokud ano přidá ji do inventáře a odebere z prostoru.
+     *  Pokud se jedná o pěníze zvedne jejích množství ve tvém inventáří. Pokud jde o silnější zbraň zvedne damage postavy
+     *
+     * @param parametry počet parametrů závisí na konkrétním příkazu.
+     */
     @Override
     public String provedPrikaz(String... parametry) {
         if(parametry.length == 0){

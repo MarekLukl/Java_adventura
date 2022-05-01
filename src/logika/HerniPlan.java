@@ -9,9 +9,10 @@ package logika;
  *  propojuje je vzájemně pomocí východů 
  *  a pamatuje si aktuální prostor, ve kterém se hráč právě nachází.
  *
- *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
+ *@author     Marek Lukl, Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
  *@version    pro školní rok 2016/2017
  */
+
 public class HerniPlan {
     
     private Prostor aktualniProstor;
@@ -19,22 +20,21 @@ public class HerniPlan {
     
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
-     *  Jako výchozí aktuální prostor nastaví halu.
+     *  Jako výchozí aktuální prostor nastaví vstupní halu.
      */
     public HerniPlan() {
         zalozProstoryHry();
-
     }
     /**
      *  Vytváří jednotlivé prostory a propojuje je pomocí východů.
-     *  Jako výchozí aktuální prostor nastaví domeček.
+     *  Jako výchozí aktuální prostor nastaví vstupní halu
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor vstupniHala = new Prostor("vstupní_hala","rudá vsupní hala", false);
+        Prostor vstupniHala = new Prostor("vstupní_hala","rudá vstupní hala", false);
         Prostor satna = new Prostor("šatna", "smrdutá šatna",false);
         Prostor spolecMistnost = new Prostor("společenská_místnost","společenská místnost pro volné chvíle ruských bratrů", false);
-        Prostor toalety = new Prostor("toalety","voňavé toalety s automatem na směnu peněz", false);
+        Prostor toalety = new Prostor("toalety","voňavé toalety", false);
         Prostor chodba = new Prostor("chodba","prázdná chodba",true);
         Prostor vezeni = new Prostor("vězení","věznice pro Putinovu politickou opozici", false);
         Prostor zbrojnice = new Prostor("zbrojnice","zbrojnice s možností zakoupit si zbraně",false);

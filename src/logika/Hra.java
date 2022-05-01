@@ -8,7 +8,7 @@ package logika;
  *  Vypisuje uvítací a ukončovací text hry.
  *  Také vyhodnocuje jednotlivé příkazy zadané uživatelem.
  *
- *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
+ *@author     Marek Lukl, Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
  *@version    pro školní rok 2016/2017
  */
 
@@ -23,7 +23,7 @@ public class Hra implements IHra {
     public Hra() {
         herniPlan = new HerniPlan();
         platnePrikazy = new SeznamPrikazu();
-        Inventar inventar = new Inventar();
+        inventar = new Inventar();
         Hrac hrac = new Hrac();
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy, herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazJdi(herniPlan, inventar, this));
@@ -116,6 +116,15 @@ public class Hra implements IHra {
      public HerniPlan getHerniPlan(){
         return herniPlan;
      }
+    /**
+     *  Metoda vrátí odkaz na inventář, je využita hlavně v testech,
+     *  kde se jejím prostřednictvím hráčův inventář
+     *
+     *  @return     odkaz na herní plán
+     */
+    public Inventar getInventar(){
+        return inventar;
+    }
     
 }
 

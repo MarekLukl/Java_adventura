@@ -1,6 +1,14 @@
 package logika;
 
 import java.util.Scanner;
+/**
+ *  Třída PrikazPouzij implementuje pro hru příkaz použij.
+ *  Tato třída je součástí jednoduché textové hry.
+ *  Provede interakci s použitelnou věcí v aktuálním prostoru.
+ *
+ *@author     Marek Lukl
+ *
+ */
 
 public class PrikazPouzij implements IPrikaz{
 
@@ -13,7 +21,13 @@ public class PrikazPouzij implements IPrikaz{
         this.hra = hra;
     }
 
-
+    /**
+     * Zjistí zda danou věc může použít a pomocí metod uzitAutomatJidlo, uzitExchangeAutomat a uzitGamblingAutomat
+     * provede interakci s vybraným automatem.
+     *
+     * @param parametry - jako  parametr obsahuje název věci co má použít.
+     * @return zprávu o použití
+     */
     @Override
     public String provedPrikaz(String... parametry) {
         if(parametry.length == 0){

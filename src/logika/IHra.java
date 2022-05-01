@@ -5,13 +5,11 @@ package logika;
 /**
  *  Rozhraní které musí implementovat hra, je na ně navázáno uživatelské rozhraní
  *
- *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
+ *@author     Marek Lukl, Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
  *@version    pro školní rok 2016/2017
  */
 public interface IHra
 {
-    //== VEŘEJNÉ KONSTANTY =====================================================
-    //== DEKLAROVANÉ METODY ====================================================
     /**
      *  Vrátí úvodní zprávu pro hráče.
      *  
@@ -50,8 +48,5 @@ public interface IHra
      *  
      *  @return     odkaz na herní plán
      */
-     public HerniPlan getHerniPlan();
-    
-    //== ZDĚDĚNÉ METODY ========================================================
-    //== INTERNÍ DATOVÉ TYPY ===================================================
+     public HerniPlan  getHerniPlan();
 }

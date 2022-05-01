@@ -1,5 +1,14 @@
 package logika;
 
+/**
+ *  Třída Postava - třída představující NPC.
+ *
+ *  Nastaví posavě neměnitelné aktuální hp, damage a název postavy.
+ *  Vrací jednotlivé údaje o postavě a upravuje její hp během souboje.
+ *
+ *@author     Marek Lukl
+ */
+
 public class Postava {
 
     private String nazev;

@@ -1,5 +1,14 @@
 package logika;
 
+/**
+ *  Třída PrikazSnez implementuje pro hru příkaz sněz.
+ *  Tato třída je součástí jednoduché textové hry.
+ *  Odebere vybranou věc (jídlo) z inventáře a podle hp dané věci zvýší aktuální hp
+ *
+ *@author     Marek Lukl
+ *
+ */
+
 public class PrikazSnez implements IPrikaz{
 
     private static final String NAZEV = "sněz";
@@ -14,11 +23,8 @@ public class PrikazSnez implements IPrikaz{
     }
 
     /**
-     * Metoda pro provedení příkazu ve hře.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy konec a napoveda nemají parametry
-     * příkazy jdi, seber, polož mají jeden parametr
-     * příkaz pouzij může mít dva parametry.
+     *
+     * Zjistí zda máš vybrané jídlo, pokud ano odebere ho a doplní tvé aktuální hp podle hp daného jídla.
      *
      * @param parametry počet parametrů závisí na konkrétním příkazu.
      */

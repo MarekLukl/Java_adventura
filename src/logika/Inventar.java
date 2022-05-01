@@ -1,7 +1,15 @@
 package logika;
-
 import java.util.HashMap;
 import java.util.Map;
+
+/**
+ *  Představuje inventář hráče. Inicializuje inventář jako HashMapu.
+ *  Umí vložit a odebrat objekt z inventáře.
+ *  Umí vypsat celý inventář, či z něj získat konkrétní věc.
+ *  Vypisuje monožství peněz v inventáři a umí posoudit, zda máš dostatek peněz k nákupu a následně je odebrat.
+ *
+ *@author     Marek Lukl
+ */
 
 public class Inventar {
 
@@ -10,8 +18,9 @@ public class Inventar {
     public Inventar() {
         inventar = new HashMap<String, Vec>();
     }
-
-    public static Map<String, Vec> getInventar() {return inventar;}
+    public static Map<String, Vec> getInventar() {
+        return inventar;
+    }
 
     public static boolean vlozitDoInvent (String nazevVeci, Vec vec){
         inventar.put(nazevVeci, vec);

@@ -15,7 +15,6 @@ interface IPrikaz {
      *  Počet parametrů je závislý na konkrétním příkazu,
      *  např. příkazy konec a napoveda nemají parametry
      *  příkazy jdi, seber, polož mají jeden parametr
-     *  příkaz pouzij může mít dva parametry.
      *  
      *  @param parametry počet parametrů závisí na konkrétním příkazu.
      *  

@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 /**
  *  Třída PrikazJdi implementuje pro hru příkaz jdi.
- *  Tato třída je součástí jednoduché textové hry.
+ *  Mění aktuální polohu.
+ *  Vyhodnocuje zda do dané místností hráč může jít. Řeší odemykání uzamknutých místností.
  *  
- *@author     Jarmila Pavlickova, Luboš Pavlíček
+ *@author     Marek Lukl, Jarmila Pavlickova, Luboš Pavlíček
  *@version    pro školní rok 2016/2017
  */
+
 public class PrikazJdi implements IPrikaz {
     private static final String NAZEV = "jdi";
     private HerniPlan plan;

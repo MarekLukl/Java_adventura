@@ -1,5 +1,13 @@
 package logika;
 
+/**
+ *  Věc reprezentuje objekt nacházející se v některém z prostorů nebo v inventáři.
+ *  Třída deklaruje základní atributy věci.
+ *
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *@author     Marek Lukl
+ */
 
 public class Vec {
     private String nazev;
@@ -41,21 +49,5 @@ public class Vec {
 
     public void setHp(int hp) {this.hp = hp;}
 
-    public boolean lzeBojovat (Vec vec){
-        if(vec.typ == "boj"){
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    public boolean lzePlatit (Vec vec){
-        if(vec.typ == "penize"){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 }
 

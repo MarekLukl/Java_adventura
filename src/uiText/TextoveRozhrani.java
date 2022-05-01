@@ -52,7 +52,6 @@ public class TextoveRozhrani {
      */
     private String prectiString() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("> ");
         return scanner.nextLine();
     }
 

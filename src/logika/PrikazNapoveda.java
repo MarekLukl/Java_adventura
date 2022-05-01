@@ -1,12 +1,12 @@
 package logika;
 
 /**
- *  Třída PrikazNapoveda implementuje pro hru příkaz napoveda.
+ *  Třída PrikazNapoveda implementuje pro hru příkaz nápověda.
  *  Tato třída je součástí jednoduché textové hry.
- *  
- *@author     Jarmila Pavlickova, Luboš Pavlíček
+ *
+ *@author     Marek Lukl, Jarmila Pavlickova, Luboš Pavlíček
  *@version    pro školní rok 2016/2017
- *  
+ *
  */
 public class PrikazNapoveda implements IPrikaz {
     

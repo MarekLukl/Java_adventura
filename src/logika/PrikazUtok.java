@@ -2,6 +2,16 @@ package logika;
 
 import java.util.*;
 
+/**
+ *  Třída PrikazUtok implementuje pro hru příkaz útoč.
+ *  Tato třída je součástí jednoduché textové hry.
+ *  Vybrané postavě sníží hp o aktuální damage postavy.
+ *  Napadené postavy následně snižují hp hráče, podle výše svého damage.
+ *
+ * @author     Marek Lukl
+ *
+ */
+
 public class PrikazUtok implements IPrikaz{
 
     private static final String NAZEV = "útoč";
@@ -16,11 +26,9 @@ public class PrikazUtok implements IPrikaz{
     }
 
     /**
-     * Metoda pro provedení příkazu ve hře.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy konec a napoveda nemají parametry
-     * příkazy jdi, seber, polož mají jeden parametr
-     * příkaz pouzij může mít dva parametry.
+     *  Zjistí zda si zadal na koho útočit a zda se postava vyskytuje v aktuálním prostoru.
+     *  Vybrané postavě sníží hp o aktuální damage postavy.
+     *  Napadené postavy následně snižují hp hráče, podle výše svého damage.
      *
      * @param parametry počet parametrů závisí na konkrétním příkazu.
      */

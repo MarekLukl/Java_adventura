@@ -1,5 +1,12 @@
 package logika;
-
+/**
+ *  Třída PrikazPoloz implementuje pro hru příkaz polož.
+ *  Tato třída je součástí jednoduché textové hry.
+ *  Odebere z inventáře věc.
+ *
+ *@author     Marek Lukl
+ *
+ */
 public class PrikazPoloz implements IPrikaz{
     private static final String NAZEV = "polož";
     private final Inventar inventar;
@@ -13,13 +20,10 @@ public class PrikazPoloz implements IPrikaz{
     }
 
     /**
-     * Metoda pro provedení příkazu ve hře.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy konec a napoveda nemají parametry
-     * příkazy jdi, seber, polož mají jeden parametr
-     * příkaz pouzij může mít dva parametry.
-     *
-     * @param parametry počet parametrů závisí na konkrétním příkazu.
+     * Odebere věc z inventáře.
+     * Zabrání v položení peněz, sníží damage pokud hráč položil svou nejsilnější zbraň.
+     * @param parametry - jako  parametr obsahuje název věci co má položit.
+     * @return zprávu o položení
      */
     @Override
     public String provedPrikaz(String... parametry) {

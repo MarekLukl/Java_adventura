@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * Prostor může mít sousední prostory připojené přes východy. Pro každý východ
  * si prostor ukládá odkaz na sousedící prostor.
  *
- * @author Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
+ * @author Marek Lukl, Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
  * @version pro školní rok 2016/2017
  */
 public class Prostor {
