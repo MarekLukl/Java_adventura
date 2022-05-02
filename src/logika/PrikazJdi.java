@@ -45,7 +45,6 @@ public class PrikazJdi implements IPrikaz {
             return "Kam mám jít? Musíš zadat jméno východu";
         }
 
-        Scanner sc = new Scanner(System.in);
         String smer = parametry[0];
 
         // zkoušíme přejít do sousedního prostoru
