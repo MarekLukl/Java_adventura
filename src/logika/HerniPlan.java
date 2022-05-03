@@ -56,17 +56,17 @@ public class HerniPlan {
         zbrojnice.setVychod(chodba);
         komnata.setVychod(chodba);
 
-        Vec pistol = new Vec("pistol",true, false, "zbran");
+        Vec pistol = new Vec("pistol", Vec.Status.ZVEDNUTELNE,"zbran");
         pistol.setDamage(20);
-        Vec euro = new Vec("euro",true,false,"penize");
+        Vec euro = new Vec("euro", Vec.Status.ZVEDNUTELNE,"penize");
         euro.setMnozstvi(100);
-        Vec rubly = new Vec("rubly",true,false,"penize");
-        Vec automatNaJidlo = new Vec("automat_na_jídlo", false, true,"stroj");
-        Vec automatNaSmenu = new Vec("exchange_automat",false,true,"stroj");
-        Vec automatNaGamble = new Vec("gambling_automat",false,true,"stroj");
-        Vec desertEagle = new Vec("desert_eagle",true,false,"zbran");
+        Vec rubly = new Vec("rubly", Vec.Status.ZVEDNUTELNE,"penize");
+        Vec automatNaJidlo = new Vec("automat_na_jídlo", Vec.Status.POUZITELNE,"stroj");
+        Vec automatNaSmenu = new Vec("exchange_automat", Vec.Status.POUZITELNE,"stroj");
+        Vec automatNaGamble = new Vec("gambling_automat", Vec.Status.POUZITELNE,"stroj");
+        Vec desertEagle = new Vec("desert_eagle", Vec.Status.ZVEDNUTELNE,"zbran");
         desertEagle.setDamage(40);
-        Vec ak47 = new Vec("AK-47",true,false,"zbran");
+        Vec ak47 = new Vec("AK-47", Vec.Status.ZVEDNUTELNE,"zbran");
         ak47.setDamage(50);
 
         vstupniHala.pridejVec(automatNaJidlo);
@@ -77,10 +77,10 @@ public class HerniPlan {
         zbrojnice.pridejVec(desertEagle);
         zbrojnice.pridejVec(ak47);
 
-        Postava straz1 = new Postava("stráž1",40,5);
-        Postava straz2 = new Postava("stráž2",40,6);
-        Postava straz3 = new Postava("stráž3",50,7);
-        Postava putin = new Postava("Putin",600, 16);
+        Stráž straz1 = new Stráž("stráž1",40,5);
+        Stráž straz2 = new Stráž("stráž2",40,6);
+        Stráž straz3 = new Stráž("stráž3",50,7);
+        Boss putin = new Boss("Putin",600, 16);
 
         spolecMistnost.pridejPostavu(straz1);
         spolecMistnost.pridejPostavu(straz2);

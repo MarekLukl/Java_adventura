@@ -14,14 +14,17 @@ public class Vec {
     private int mnozstvi;
     private int damage;
     private int hp;
-    private final boolean zvednutelne;
-    private final boolean pouzitelne;
+    private final Status status;
     private final String typ;
 
-    public Vec(String nazev, boolean zvednutelne, boolean pouzitelne, String typ) {
+    public enum Status{
+        POUZITELNE,
+        ZVEDNUTELNE
+    }
+
+    public Vec(String nazev, Status status, String typ) {
         this.nazev = nazev;
-        this.zvednutelne = zvednutelne;
-        this.pouzitelne = pouzitelne;
+        this.status = status;
         this.typ = typ;
     }
     public String getNazev () { return nazev;}
@@ -37,9 +40,23 @@ public class Vec {
 
     public String getTyp() {return typ;}
 
-    public boolean lzeVzit (){return zvednutelne;}
+    public Status getStatus() {
+        return status;
+    }
 
-    public boolean lzePouzit (){return  pouzitelne;}
+    public boolean lzeVzit (){
+        if(getStatus() == Status.ZVEDNUTELNE){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean lzePouzit (){
+        if(getStatus() == Status.POUZITELNE){
+            return true;
+        }
+        return false;
+    }
 
     public int getDamage() {return damage;}
 
