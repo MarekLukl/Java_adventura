@@ -7,19 +7,25 @@ package logika;
  *@author     Marek Lukl
  */
 
-public class Hrac {
-    private static int hp;
+public class Hrac extends Postava{
+    private static int hp = 100;
     private final static int maxHp = 100;
-    private static int damage;
+    private static int damage = 100;
 
-    public Hrac() {
-        this.hp = 100;
-        this.damage = 10;
+    public Hrac(String nazev, int hp, int damage) {
+        super(nazev, hp, damage);
     }
+
 
     public int getHp() {return hp;}
 
     public int getDamage() {return damage;}
+
+
+    @Override
+    public void superschopnost(Postava postava) {
+
+    }
 
     public void setHp(int hp) {this.hp = hp;}
 

@@ -9,9 +9,9 @@ package logika;
  *@author     Marek Lukl
  */
 
-public class Postava {
+public abstract class Postava {
 
-    private String nazev;
+    private final String nazev;
     private int hp;
     private int damage;
 
@@ -32,6 +32,9 @@ public class Postava {
 
     public int getDamage() {return damage;}
 
-    public void setDamage(int damage) {this.damage = damage;}
+    public abstract void superschopnost(Postava postava);
 
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 }
