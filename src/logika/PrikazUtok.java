@@ -1,5 +1,6 @@
 package logika;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -64,9 +65,11 @@ public class PrikazUtok implements IPrikaz{
         Scanner sc = new Scanner(System.in);
         seznamPostav.get(nazevPostavy).upravitHp(-hrac.getDamage());
          System.out.println("Útok na " + nazevPostavy + ", ubral si " + hrac.getDamage());
+
          if(seznamPostav.get(nazevPostavy).getHp()<1){  // pokud má postava menší hp než 1, odebere ji
              System.out.println(nazevPostavy + " je mrtev");
              seznamPostav.remove(nazevPostavy);
+
              if(seznamPostav.isEmpty() && prostor.getNazev().equals("společenská_místnost")){
                  Prostor sousedniProstor = plan.getAktualniProstor().vratSousedniProstor("chodba");
                  sousedniProstor.setZamceno(false);   //pokud jsou všechny stráže mrtvé, chodba se otveře
@@ -83,10 +86,20 @@ public class PrikazUtok implements IPrikaz{
              System.out.println("Útok " + seznamPostav.get(s).getNazev() + ",ubral ti " +
                      seznamPostav.get(s).getDamage() + "\n" + "Tvoje hp: " + hrac.getHp() + "   (zmáčkni enter)");
              sc.nextLine();
+
+
              if(hrac.getHp()<1){
-                 System.out.println("Jsi mrtev." +  " Konec hry.");
+                 System.out.println("Jsi mrtev. RIP Volodoymyr Zelenskyj 1978-01-25  -  " + LocalDate.now() +  " Konec hry.");
                  hra.setKonecHry(true);
                  return true;
+             }
+             // zavolá strážníkovu superschopnost
+             if(seznamPostav.get(s).getClass() == Stráž.class){
+                 seznamPostav.get(s).superschopnost(seznamPostav.get(s));
+             }
+             // zavolá superschopnost bosse
+             if(seznamPostav.get(s).getClass() == Boss.class){
+                 seznamPostav.get(s).superschopnost(seznamPostav.get(s));
              }
          }
         for(String s: seznamPostav.keySet()){

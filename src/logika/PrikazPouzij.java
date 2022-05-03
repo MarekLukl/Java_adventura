@@ -76,7 +76,7 @@ public class PrikazPouzij implements IPrikaz{
                     System.out.println("Můžeš mít jen jednu bagetu.");
                     break;
                 }
-                Vec bageta = new Vec("bageta",true,false,"jidlo");
+                Vec bageta = new Vec("bageta", Vec.Status.ZVEDNUTELNE,"jidlo");
                 bageta.setHp(20);
                 if(!(inventar.nakup(5,"euro"))){break;}
                 inventar.vlozitDoInvent(bageta.getNazev(),bageta);
@@ -87,7 +87,7 @@ public class PrikazPouzij implements IPrikaz{
                     System.out.println("Můžeš mít jen jeden banán.");
                     break;
                 }
-                Vec banan = new Vec("banán",true,false,"jidlo");
+                Vec banan = new Vec("banán", Vec.Status.ZVEDNUTELNE,"jidlo");
                 banan.setHp(50);
                 if((!inventar.nakup(10,"euro"))){break;}
                 inventar.vlozitDoInvent(banan.getNazev(),banan);
@@ -245,7 +245,7 @@ public class PrikazPouzij implements IPrikaz{
         boolean sudost = (randomCislo % 2 == 0);
         if((sudost && vybranaStrana.equals("2") ||
         (!sudost && vybranaStrana.equals("1")))){ // zjišťuje zda se odhad sudosti shoduje se sudostí výsledného náhodného čísla
-            System.out.println("Vyhráli jste " + sazenaCastka*2 + "!!" + "\n");
+            System.out.println("Vyhráli jste " + sazenaCastka * 2 + "!!" + "\n");
             inventar.getVec("rubly").upravitMnozstvi(inventar,sazenaCastka,"rubly");
         }else{
             System.out.println("Prohráli jste." +"\n" + "Příště to určitě vyjde!" + "\n");

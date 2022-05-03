@@ -1,5 +1,6 @@
 package logika;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
@@ -116,7 +117,7 @@ public class PrikazJdi implements IPrikaz {
                 konec = true;
             }else if(input.equals("3")){
                 Prostor prostor = plan.getAktualniProstor();
-                return "Vyber si na koho zaútočíš jako první." + prostor.vypisSeznamuPostav();
+                return "Vyber si na koho zaútočíš jako první. Zadej příkaz \"útoč\" jméno stráže" + prostor.vypisSeznamuPostav();
             }else if(input.equals("4")){
                 return "Odešel si";
             }else{
@@ -133,8 +134,8 @@ public class PrikazJdi implements IPrikaz {
         for(int i=0; i < 3; i++) {
             System.out.println("výstřel " + (i+1) + "/3 (zmáčkni enter)");
             sc.nextLine();
-            if(PrikazPouzij.getRandomCislo(1,4)==1){
-                System.out.println("Zabil ses.");
+            if(PrikazPouzij.getRandomCislo(1,2)==1){
+                System.out.println("Zabil ses.  RIP Volodoymyr Zelenskyj 1978-01-25  -  " + LocalDate.now());
                 hra.setKonecHry(true);
                 return false;
             }
