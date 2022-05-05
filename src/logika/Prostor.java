@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  */
 public class Prostor {
 
-    private String nazev;
+    private final String NAZEV;
     private String popis;
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
     private boolean zamceno;
@@ -33,7 +33,7 @@ public class Prostor {
      * @param zamceno
      */
     public Prostor(String nazev, String popis, boolean zamceno) {
-        this.nazev = nazev;
+        this.NAZEV = nazev;
         this.popis = popis;
         vychody = new HashSet<>();
         this.zamceno = zamceno;
@@ -86,7 +86,7 @@ public class Prostor {
         //Vrátí true pro stejné názvy a i v případě, že jsou oba názvy null,
         //jinak vrátí false.
 
-       return (java.util.Objects.equals(this.nazev, druhy.nazev));       
+       return (java.util.Objects.equals(this.NAZEV, druhy.NAZEV));
     }
 
     /**
@@ -99,7 +99,7 @@ public class Prostor {
     @Override
     public int hashCode() {
         int vysledek = 3;
-        int hashNazvu = java.util.Objects.hashCode(this.nazev);
+        int hashNazvu = java.util.Objects.hashCode(this.NAZEV);
         vysledek = 37 * vysledek + hashNazvu;
         return vysledek;
     }
@@ -112,7 +112,7 @@ public class Prostor {
      * @return název prostoru
      */
     public String getNazev() {
-        return nazev;       
+        return NAZEV;
     }
 
     /**
@@ -198,12 +198,17 @@ public class Prostor {
     }
     public String vypisSeznamuPostav(){
         if(seznamPostav.size()==0){
-            return "";
+            return "Nikdo tu není";
         }
-        String seznam1 = "\n" + "Osoby v místnosti: ";
+        String seznam1 = "Osoby v místnosti: ";
         for(String s: seznamPostav.keySet()){
-            seznam1 += " " + seznamPostav.get(s).getNazev() +
-                    " damage: " + seznamPostav.get(s).getDamage() + " hp: " + seznamPostav.get(s).getHp() + ",";
+            // pokud se jedná o zaměstnance vypíše jen jméno
+            if(seznamPostav.get(s).getClass().equals(Zaměstnanec.class)){
+                seznam1 += " " + seznamPostav.get(s).getNazev() + ",";
+            }else{
+                seznam1 += " " + seznamPostav.get(s).getNazev() +
+                        " damage: " + seznamPostav.get(s).getDamage() + " hp: " + seznamPostav.get(s).getHp() + ",";
+            }
         }
         String  seznam2 =  seznam1.substring(0, seznam1.length()-1);
         return seznam2;
@@ -222,6 +227,15 @@ public class Prostor {
     public void pridejPostavu(Postava postava){seznamPostav.put(postava.getNazev(), postava);}
 
     public Map<String, Postava> getSeznamPostav() {return seznamPostav;}
+
+    public Postava getPostavu(String key) {
+        for(String s: seznamPostav.keySet()){
+            if(key.equals(s)){
+                return seznamPostav.get(s);
+            }
+        }
+        return null;
+    }
 }
 
 

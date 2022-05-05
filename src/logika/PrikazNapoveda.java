@@ -12,7 +12,7 @@ public class PrikazNapoveda implements IPrikaz {
     
     private static final String NAZEV = "nápověda";
     private SeznamPrikazu platnePrikazy;
-    private final HerniPlan plan;
+    private HerniPlan plan;
     
     
      /**

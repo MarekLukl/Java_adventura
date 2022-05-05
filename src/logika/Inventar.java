@@ -16,15 +16,14 @@ public class Inventar {
     private static Map<String,Vec > inventar;
 
     public Inventar() {
-        inventar = new HashMap<String, Vec>();
+        inventar = new HashMap<>();
     }
     public static Map<String, Vec> getInventar() {
         return inventar;
     }
 
-    public static boolean vlozitDoInvent (String nazevVeci, Vec vec){
+    public static void vlozitDoInvent (String nazevVeci, Vec vec){
         inventar.put(nazevVeci, vec);
-        return true;
     }
 
     public void odebratZInvent(String nazev){
@@ -55,7 +54,7 @@ public class Inventar {
     }
     public static String getStavPenezenky(){
         String stavPenezenky = "";
-        if (Inventar.inventar.isEmpty()||!(Inventar.inventar.containsKey("euro")) && !(Inventar.inventar.containsKey("rubly"))) {
+        if (Inventar.inventar.get("euro").getMnozstvi()==0 && Inventar.inventar.get("rubly").getMnozstvi()==0) {
             return "Jsi švorc";
         }
 

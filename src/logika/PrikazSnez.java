@@ -12,9 +12,9 @@ package logika;
 public class PrikazSnez implements IPrikaz{
 
     private static final String NAZEV = "sněz";
-    private final Hra hra;
-    private final Hrac hrac;
-    private final Inventar inventar;
+    private Hra hra;
+    private Hrac hrac;
+    private Inventar inventar;
 
     public PrikazSnez(Hra hra, Hrac hrac, Inventar inventar) {
         this.hra = hra;

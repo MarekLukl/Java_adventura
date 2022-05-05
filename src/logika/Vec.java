@@ -14,8 +14,9 @@ public class Vec {
     private int mnozstvi;
     private int damage;
     private int hp;
-    private final Status status;
-    private final String typ;
+    private final Status STATUS;
+    private final String TYP;
+    private int cena;
 
     public enum Status{
         POUZITELNE,
@@ -24,8 +25,8 @@ public class Vec {
 
     public Vec(String nazev, Status status, String typ) {
         this.nazev = nazev;
-        this.status = status;
-        this.typ = typ;
+        this.STATUS = status;
+        this.TYP = typ;
     }
     public String getNazev () { return nazev;}
 
@@ -38,10 +39,10 @@ public class Vec {
                 .getMnozstvi()+ mnozstvi);
     }
 
-    public String getTyp() {return typ;}
+    public String getTyp() {return TYP;}
 
     public Status getStatus() {
-        return status;
+        return STATUS;
     }
 
     public boolean lzeVzit (){
@@ -66,5 +67,12 @@ public class Vec {
 
     public void setHp(int hp) {this.hp = hp;}
 
+    public int getCena() {
+        return cena;
+    }
+
+    public void setCena(int cena) {
+        this.cena = cena;
+    }
 }
 

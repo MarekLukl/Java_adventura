@@ -33,12 +33,13 @@ public class Hra implements IHra {
         platnePrikazy.vlozPrikaz(new PrikazUtok(this,hrac, herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazSnez(this,hrac,inventar));
         platnePrikazy.vlozPrikaz(new PrikazPoloz(inventar,this,hrac));
+        platnePrikazy.vlozPrikaz(new PrikazKomunikuj(inventar,this, hrac));
 
         //vložení rublů a euro do inventáře, ale v množství 0
         Vec euro = new Vec("euro", Vec.Status.ZVEDNUTELNE,"penize");
         Vec rubly = new Vec("rubly", Vec.Status.ZVEDNUTELNE,"penize");
-        euro.setMnozstvi(0);
-        rubly.setMnozstvi(0);
+        euro.setMnozstvi(200);
+        rubly.setMnozstvi(2000);
         inventar.vlozitDoInvent("euro",euro);
         inventar.vlozitDoInvent("rubly",rubly);
     }
@@ -91,12 +92,11 @@ public class Hra implements IHra {
             textKVypsani = prikaz.provedPrikaz(parametry);
         }
         else {
-            textKVypsani="Nevím co tím myslíš? Tento příkaz neznám. ";
+            textKVypsani="Nevím co tím myslíš? Tento příkaz neznám.";
         }
         return textKVypsani;
     }
-    
-    
+
      /**
      *  Nastaví, že je konec hry, metodu využívá třída PrikazKonec,
      *  mohou ji použít i další implementace rozhraní Prikaz.

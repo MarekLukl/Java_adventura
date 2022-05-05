@@ -11,16 +11,16 @@ package logika;
 
 public abstract class Postava {
 
-    private final String nazev;
+    private final String NAZEV;
     private int hp;
     private int damage;
 
     public Postava(String nazev, int hp, int damage) {
-        this.nazev = nazev;
+        this.NAZEV = nazev;
         this.hp = hp;
         this.damage = damage;
     }
-    public String getNazev() {return nazev;}
+    public String getNazev() {return NAZEV;}
 
     public int getHp() {return hp;}
 

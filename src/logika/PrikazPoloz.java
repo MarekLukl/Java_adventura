@@ -9,9 +9,9 @@ package logika;
  */
 public class PrikazPoloz implements IPrikaz{
     private static final String NAZEV = "polož";
-    private final Inventar inventar;
-    private final Hra hra;
-    private final Hrac hrac;
+    private Inventar inventar;
+    private Hra hra;
+    private Hrac hrac;
 
     public PrikazPoloz(Inventar inventar, Hra hra, Hrac hrac) {
         this.inventar = inventar;
@@ -51,6 +51,9 @@ public class PrikazPoloz implements IPrikaz{
                         }
                     }
                 }
+                //pokud pokládá ochranou věc, sníží se mu max hp o počet hp dané věci
+            }else if(vec.getTyp().equals("ochrana")){
+                hrac.setMaxHp(-vec.getHp());
             }
             prostor.pridejVec(vec);
             inventar.odebratZInvent(vec.getNazev());

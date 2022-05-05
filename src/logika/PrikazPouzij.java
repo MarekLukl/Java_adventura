@@ -13,8 +13,8 @@ import java.util.Scanner;
 public class PrikazPouzij implements IPrikaz{
 
     private static final String NAZEV = "použij";
-    private final Inventar inventar;
-    private final Hra hra;
+    private Inventar inventar;
+    private Hra hra;
 
     public PrikazPouzij(Inventar inventar, Hra hra) {
         this.inventar = inventar;

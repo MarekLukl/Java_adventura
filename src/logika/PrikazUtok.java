@@ -16,8 +16,8 @@ import java.util.*;
 public class PrikazUtok implements IPrikaz{
 
     private static final String NAZEV = "útoč";
-    private final Hra hra;
-    private final Hrac hrac;
+    private Hra hra;
+    private Hrac hrac;
     private HerniPlan plan;
 
     public PrikazUtok(Hra hra, Hrac hrac, HerniPlan plan) {
@@ -66,16 +66,24 @@ public class PrikazUtok implements IPrikaz{
         seznamPostav.get(nazevPostavy).upravitHp(-hrac.getDamage());
          System.out.println("Útok na " + nazevPostavy + ", ubral si " + hrac.getDamage());
 
-         if(seznamPostav.get(nazevPostavy).getHp()<1){  // pokud má postava menší hp než 1, odebere ji
-             System.out.println(nazevPostavy + " je mrtev");
+         // pokud má postava menší hp než 1, odebere ji
+         if(seznamPostav.get(nazevPostavy).getHp()<1){
+             System.out.println(nazevPostavy + " je zneškodněn");
              seznamPostav.remove(nazevPostavy);
 
+             //pokud jsou všechny stráže mrtvé, chodba se otveře
              if(seznamPostav.isEmpty() && prostor.getNazev().equals("společenská_místnost")){
                  Prostor sousedniProstor = plan.getAktualniProstor().vratSousedniProstor("chodba");
-                 sousedniProstor.setZamceno(false);   //pokud jsou všechny stráže mrtvé, chodba se otveře
+                 sousedniProstor.setZamceno(false);
                  System.out.println("Vstup do chodby je volný");
              }
-             if(nazevPostavy.equals("Putin") && seznamPostav.isEmpty()){
+             // pokud zabiješ uklízečku vypadne z ní kód ke komnatě
+             if(nazevPostavy.equals("uklízečka")){
+                 System.out.println("Zabil si nevinnou uklízečku a vypadl jí z kapsy paírek s číslem '42069'.");
+                 return true;
+             }
+             // pokud porazíš Putina, dá ti možnost volby co s ním
+             if(nazevPostavy.equals("Putin")){
                  dodelatPutina();
                  hra.setKonecHry(true);
                  return true;
@@ -89,7 +97,7 @@ public class PrikazUtok implements IPrikaz{
 
 
              if(hrac.getHp()<1){
-                 System.out.println("Jsi mrtev. RIP Volodoymyr Zelenskyj 1978-01-25  -  " + LocalDate.now() +  " Konec hry.");
+                 System.out.println("Jsi mrtev. RIP Volodoymyr Zelenskyj 1978-01-25 - " + LocalDate.now() +  " Konec hry.");
                  hra.setKonecHry(true);
                  return true;
              }
