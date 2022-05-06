@@ -23,7 +23,7 @@ public class InventarTest {
     public void vlozitDoInvent() {
     assertFalse(inventar.getInventar().containsKey("věc"));
     Vec vec = new Vec("věc",ZVEDNUTELNE,"ochrana");
-    inventar.vlozitDoInvent("věc",vec);
+    inventar.getInventar().put("věc",vec);
     assertTrue(inventar.getInventar().containsKey("věc"));
     }
 }

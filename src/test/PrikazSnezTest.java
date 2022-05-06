@@ -27,7 +27,7 @@ public class PrikazSnezTest {
     public void snezeniJidla() {
         Vec banan = new Vec("banán", Vec.Status.ZVEDNUTELNE,"jidlo");
         banan.setHp(50);
-        hra.getInventar().vlozitDoInvent("banán",banan);
+        hra.getInventar().getInventar().put("banán",banan);
         hra.getHrac().setHp(20);
         assertEquals("Tvé hp: 70", hra.zpracujPrikaz("sněz banán"));
     }

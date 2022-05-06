@@ -23,12 +23,17 @@ public class PrikazPolozTest {
     @Test
     public void polozeniVeci(){
         Vec vec = new Vec("věc", Vec.Status.ZVEDNUTELNE,"jidlo");
-        hra.getInventar().vlozitDoInvent("věc",vec);
-        assertEquals("Položil jsi věc: " + vec.getNazev() + "\n" + "Tvůj inventář: rubly(2000) euro(200) ",
+        hra.getInventar().getInventar().put("věc",vec);
+        assertEquals("Položil jsi věc: " + vec.getNazev() + "\n" + "Tvůj inventář: rubly(2000) euro(0) ",
                 hra.zpracujPrikaz("polož věc"));
     }
     @Test
     public void polozeniPenez(){
+        assertEquals("Peníze nepokládej, místo ti nezabírají a někdo by ti je mohl vzít.",
+                hra.zpracujPrikaz("polož euro"));
+    }
+    @Test
+    public void neuplnyPrikaz(){
         assertEquals("Peníze nepokládej, místo ti nezabírají a někdo by ti je mohl vzít.",
                 hra.zpracujPrikaz("polož euro"));
     }
