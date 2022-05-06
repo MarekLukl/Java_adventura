@@ -6,7 +6,7 @@ package logika;
  *  Odebere vybranou věc (jídlo) z inventáře a podle hp dané věci zvýší aktuální hp
  *
  *@author     Marek Lukl
- *
+ *@version   1.0
  */
 
 public class PrikazSnez implements IPrikaz{

@@ -10,7 +10,7 @@ import java.util.*;
  *  Napadené postavy následně snižují hp hráče, podle výše svého damage.
  *
  * @author     Marek Lukl
- *
+ * @version   1.0
  */
 
 public class PrikazUtok implements IPrikaz{
@@ -61,6 +61,18 @@ public class PrikazUtok implements IPrikaz{
     @Override
     public String getNazev() {return NAZEV;}
 
+    /**
+     * Metoda odečte od postavy hráčův damage, vrátí výší jejího hp, v případě dosažení nuly postavu odebere.
+     * Dále odebírá damage všech postav v místnosti od hráčova hp. A kontroluje zda je stále na živu.
+     * Volá metodu superschopnost jednotlivých postav.
+     * Pokud všechny stráže zemřou otevře chodbu.
+     * Pokud zabiješ uklízečku vypadne z ní kód k otevření komnaty.
+     *
+     * @param seznamPostav
+     * @param nazevPostavy
+     * @param prostor
+     * @return true pokud hra soubojem skončila
+     */
     public boolean jednoKoloBoje(Map<String,Postava> seznamPostav,String nazevPostavy, Prostor prostor) {
         Scanner sc = new Scanner(System.in);
         seznamPostav.get(nazevPostavy).upravitHp(-hrac.getDamage());
@@ -80,7 +92,6 @@ public class PrikazUtok implements IPrikaz{
              // pokud zabiješ uklízečku vypadne z ní kód ke komnatě
              if(nazevPostavy.equals("uklízečka")){
                  System.out.println("Zabil si nevinnou uklízečku a vypadl jí z kapsy paírek s číslem '42069'.");
-                 return true;
              }
              // pokud porazíš Putina, dá ti možnost volby co s ním
              if(nazevPostavy.equals("Putin")){
@@ -116,6 +127,11 @@ public class PrikazUtok implements IPrikaz{
         }
         return false;
     }
+
+    /**
+     * Metoda dá hráči možnost vybrat si osud poraženého Putina.
+     * A vypíše finální zprávy na konec hry.
+     */
     public void dodelatPutina(){
         Scanner sc = new Scanner(System.in);
         String [] moznosti = {"1","2","3","4"};
@@ -126,6 +142,6 @@ public class PrikazUtok implements IPrikaz{
                     "\npro předání možnosti volby ukrajinskému lidu '3'   pro penetraci mozku kulkou '4'");
             input =sc.nextLine();
         }while(!Arrays.stream(moznosti).anyMatch(input::equals)); // určí zda input se shoduje s jednou z možností
-        System.out.println("Jak si přeješ. \nTeď utíkej na tiskovku a všem o tom popovídej.");;
+        System.out.println("Jak si přeješ. \n Teď vzhůru na tiskovku a všem o tom popovídej.");;
     }
 }

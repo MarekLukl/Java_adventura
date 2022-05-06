@@ -5,7 +5,7 @@ package logika;
  *  Tato třída je součástí jednoduché textové hry.
  *
  *@author     Marek Lukl, Jarmila Pavlickova, Luboš Pavlíček
- *@version    pro školní rok 2016/2017
+ *@version   1.0
  *
  */
 public class PrikazNapoveda implements IPrikaz {
@@ -30,7 +30,7 @@ public class PrikazNapoveda implements IPrikaz {
     
     /**
      *  Vrací základní nápovědu po zadání příkazu "napoveda". Nyní se vypisuje
-     *  vcelku primitivní zpráva a seznam dostupných příkazů.
+     *  vcelku primitivní zpráva, seznam dostupných příkazů, aktuální prostor a co a kdo se v něm nachází.
      *  
      *  @return napoveda ke hre
      */

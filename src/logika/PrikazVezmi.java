@@ -6,7 +6,7 @@ package logika;
  *  Přidá do invenáře věc a odebere ji z aktuálního prostoru.
  *
  * @author     Marek Lukl
- *
+ * @version    1.0
  */
 
 public class PrikazVezmi implements IPrikaz {
@@ -48,7 +48,7 @@ public class PrikazVezmi implements IPrikaz {
             }else if(vec.getTyp()=="zbran"){
             zmenaDamage(vec);
             }else{
-                inventar.vlozitDoInvent(vec.getNazev(), vec);
+                inventar.getInventar().put(vec.getNazev(), vec);
             }
             prostor.odstranPredmet(vec);
             return "Vzal jsi předmět: " + vec.getNazev() + "\n" + inventar.vypisInventare();
@@ -56,12 +56,22 @@ public class PrikazVezmi implements IPrikaz {
 
         return null;
     }
-
+    /**
+     * Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     *
+     * @return nazev prikazu
+     */
     @Override
     public String getNazev() {
         return NAZEV;
     }
 
+    /**
+     * Metoda změní počet peněz v inventáři
+     *
+     * @param mena
+     * @param vec
+     */
     public void pridaniPenez(String mena, Vec vec){
         if(mena=="euro"){
             vec.upravitMnozstvi(inventar,vec.getMnozstvi(),vec.getNazev());
@@ -69,10 +79,16 @@ public class PrikazVezmi implements IPrikaz {
             vec.upravitMnozstvi(inventar,vec.getMnozstvi(),vec.getNazev());
         }
     }
+
+    /**
+     * Metoda zjistí zda má věc vyšší damage než hráč, pokud ano dorovná ho.
+     *
+     * @param vec
+     */
     public void zmenaDamage(Vec vec){
         if(hrac.getDamage()<vec.getDamage()){
             hrac.setDamage(vec.getDamage());
         }
-        inventar.vlozitDoInvent(vec.getNazev(),vec);
+        inventar.getInventar().put(vec.getNazev(),vec);
     }
 }

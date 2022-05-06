@@ -9,7 +9,7 @@ package logika;
  *  Také vyhodnocuje jednotlivé příkazy zadané uživatelem.
  *
  *@author     Marek Lukl, Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
- *@version    pro školní rok 2016/2017
+ *@version    1.0
  */
 
 public class Hra implements IHra {
@@ -25,7 +25,7 @@ public class Hra implements IHra {
         herniPlan = new HerniPlan();
         platnePrikazy = new SeznamPrikazu();
         inventar = new Inventar();
-        hrac = new Hrac("hráč",100,100);
+        hrac = new Hrac("hráč",100,10);
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy, herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazJdi(herniPlan, inventar, this));
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
@@ -39,10 +39,10 @@ public class Hra implements IHra {
         //vložení rublů a euro do inventáře, ale v množství 0
         Vec euro = new Vec("euro", Vec.Status.ZVEDNUTELNE,"penize");
         Vec rubly = new Vec("rubly", Vec.Status.ZVEDNUTELNE,"penize");
-        euro.setMnozstvi(200);
+        euro.setMnozstvi(0);
         rubly.setMnozstvi(2000);
-        inventar.vlozitDoInvent("euro",euro);
-        inventar.vlozitDoInvent("rubly",rubly);
+        inventar.getInventar().put("euro",euro);
+        inventar.getInventar().put("rubly",rubly);
     }
 
     /**

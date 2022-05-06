@@ -1,6 +1,13 @@
 package logika;
 
 import java.util.*;
+/**
+ *  Třída PrikazKomunikuj implementuje pro hru příkaz komunikuj.
+ *  Umožňuje interakci s některou z postav.
+ *
+ *@author     Marek Lukl
+ *@version    1.0
+ */
 
 public class PrikazKomunikuj implements IPrikaz{
 
@@ -17,12 +24,10 @@ public class PrikazKomunikuj implements IPrikaz{
     }
 
     /**
-     * Metoda pro provedení příkazu ve hře.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy konec a napoveda nemají parametry
-     * příkazy jdi, seber, polož mají jeden parametr
+     * Metoda zajistí zda hráč zadal s kým komunikovat a zda jde o postavu nacházející se v dané místnosti.
+     * Pokud ano zavolá metodu komunikovat.
      *
-     * @param parametry počet parametrů závisí na konkrétním příkazu.
+     * @param parametry jméno postavy
      */
     @Override
     public String provedPrikaz(String... parametry) {
@@ -49,6 +54,12 @@ public class PrikazKomunikuj implements IPrikaz{
     public String getNazev() {
         return NAZEV;
     }
+
+    /**
+     * Metoda rozliší o kterou postavu jde a podle toho zavolá správnou metodu komunikace s danou postavou.
+     *
+     * @param postava
+     */
     public void komunikace(Postava postava){
         if(postava.getNazev().equals("uklízečka")){
             komunikaceSUklízečkou();
@@ -58,6 +69,14 @@ public class PrikazKomunikuj implements IPrikaz{
             System.out.println(postava.getNazev() + " s tebou komunikovat nechce");
         }
     }
+
+    /**
+     * Metoda vypíše zprávu o žádosti o pomoc od uklízečky a dá hráči možnost pommoci seřadit list zbraní podle abecedy.
+     * Hráči možnost o opakované pokusy dokud se mu to nepodaří a nebo může kdykoliv konverzaci opustit.
+     * Pokud názvy seřadí správně dostane kód k otevření komnaty.
+     *
+     */
+
     public void komunikaceSUklízečkou(){
         Scanner sc = new Scanner(System.in);
         boolean konec = false;
@@ -89,6 +108,14 @@ public class PrikazKomunikuj implements IPrikaz{
             }
         }
     }
+
+    /**
+     * Vezme hráčův input, ten rozdělí na jednotlivá slova, která postupně vloží do vektoru. Který se bude
+     * porovnávat se správným řešením.
+     *
+     * @param radek
+     * @return Vector<String> pokus o seřazení
+     */
     public Vector<String> razeniZbrani(String radek){
         String [] slova = radek.split("[ \t]+");
         Vector<String> pokusSerazeni = new Vector<>();
@@ -98,6 +125,10 @@ public class PrikazKomunikuj implements IPrikaz{
         return pokusSerazeni;
     }
 
+    /**
+     * Metoda vypisuje hráčovi nabídku prodejce a nechává ho si vybrat, zda koupí nebo odejde.
+     * Vypisuje zprávy pokud po validaci nemá dostatek peněz, či už daný předmět vlastní.
+     */
     public void komunikaceSProdavačem(){
         HashMap<String,Vec> nabidkaZbrojnice;
         String vybraneZbozi = "";
@@ -130,6 +161,11 @@ public class PrikazKomunikuj implements IPrikaz{
         nakup(zbozi);
     }
 
+    /**
+     * Metoda vytvoří nabídku zbrojnice, v podobě HashpMapy a tu pak vrátí.
+     *
+     * @return HashMap<String,vec> naplněná nabídkou zbrojnice
+     */
     public HashMap<String,Vec> getNabidkaZbrojnice(){
         HashMap<String,Vec> nabidka = new HashMap<>();
 
@@ -149,6 +185,12 @@ public class PrikazKomunikuj implements IPrikaz{
 
         return nabidka;
     }
+
+    /**
+     * Metoda vezme HashMapu plnou nabídky zbrojnice a vypíše všechny její části s důležitými atributy, hp a damage.
+     *
+     * @param nabidkaZbrojnice
+     */
     public void vypisNabidkyZbrojnice(HashMap<String,Vec> nabidkaZbrojnice){
         String vypis = "";
         for(String s: nabidkaZbrojnice.keySet()){
@@ -162,6 +204,12 @@ public class PrikazKomunikuj implements IPrikaz{
         }
         System.out.println(vypis);
     }
+
+    /**
+     * Metoda vypíše zprávu v případě, že je kapacita inventáře plná.
+     * Pokud ne zeptá se co si chceš z nabídky koupit.
+     * @return String vybrané zboží
+     */
     public String vyberNakupu(){
         if(inventar.getInventar().size()>5){
             System.out.println("Uneseš jen 4 věci (kromě peněz) musíš něco položit");
@@ -171,6 +219,12 @@ public class PrikazKomunikuj implements IPrikaz{
         System.out.println("Zadej název věci co si chceš koupit (pokud nic zadej '1'): ");
         return sc.nextLine();
     }
+
+    /**
+     * Metoda vypíše zprávu, pokud již vybrané zboží vlastníš.
+     * @param vyber
+     * @return String zpráva o vlastnictví
+     */
     public boolean validaceUnikatnosti(String vyber){
         if(inventar.getInventar().containsKey(vyber)){
             System.out.println("Nemůžeš mít " + vyber + " dvakrát");
@@ -178,6 +232,13 @@ public class PrikazKomunikuj implements IPrikaz{
         }
         return true;
     }
+
+    /**
+     * Metoda zjistí zda je vybrané zboží v nabídce.
+     * @param vyber
+     * @param nabidka
+     * @return booelan podle dostupnosti zboží
+     */
     public boolean validaceDostupnosti(String vyber, HashMap<String,Vec> nabidka){
         if(nabidka.containsKey(vyber)){
             return true;
@@ -185,6 +246,11 @@ public class PrikazKomunikuj implements IPrikaz{
             return false;
         }
     }
+    /**
+     * Metoda zjistí zda máš dostatečně peněz na vybrané zboží
+     * @param zbozi
+     * @return boolean podle dostatku peněz
+     */
     public boolean validaceProstredku(Vec zbozi){
         if(zbozi.getCena()>inventar.getVec("euro").getMnozstvi()){
             return false;
@@ -192,8 +258,15 @@ public class PrikazKomunikuj implements IPrikaz{
             return true;
         }
     }
+
+    /**
+     * Metoda odečte cenu zboží z tvých peněz a přidá ti zboží do inventáře.
+     * Zkontroluju jestli se jedná o silnější zbraň než už máš a popřípadě zvedne damage.
+     * Pokud se jedná o chraný předmět, zvedne tvé maximální Hp.
+     * @param zbozi
+     */
     public void nakup(Vec zbozi){
-        inventar.vlozitDoInvent(zbozi.getNazev(),zbozi);
+        inventar.getInventar().put(zbozi.getNazev(),zbozi);
         inventar.getVec("euro").upravitMnozstvi(inventar,-zbozi.getMnozstvi(),"euro");
         System.out.println("Nákup proběhl úspěšně.");
         if(zbozi.getTyp().equals("zbran") && hrac.getDamage()<zbozi.getDamage()){

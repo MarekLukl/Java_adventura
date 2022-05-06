@@ -9,7 +9,7 @@ import java.util.Scanner;
  *  Vyhodnocuje zda do dané místností hráč může jít. Řeší odemykání uzamknutých místností.
  *  
  *@author     Marek Lukl, Jarmila Pavlickova, Luboš Pavlíček
- *@version    pro školní rok 2016/2017
+ *@version    1.0
  */
 
 public class PrikazJdi implements IPrikaz {
@@ -79,6 +79,14 @@ public class PrikazJdi implements IPrikaz {
     public String getNazev() {
         return NAZEV;
     }
+
+    /**
+     *  Metoda se ptá hráče na na kód k otevření komnaty. Pokud zadá správně komnata se otevře.
+     *  Pokud špatně vypíše se zpráva "Nesprávný kód"
+     *
+     * @param sousedniProstor
+     * @return boolean podle toho zda se komnata otevře
+     */
     public boolean odemkniKomnatu(Prostor sousedniProstor){
         Scanner sc = new Scanner(System.in);
         System.out.println("Zadej kód pro otevření dveří: ");
@@ -91,6 +99,14 @@ public class PrikazJdi implements IPrikaz {
             return false;
         }
     }
+
+    /**
+     * Metoda hráči oznámí,že je chodba zamčená a nabídne mu 4 možnosti.
+     * Hráč může zaplatit, zkusit štěstí u ruské rulety, bojovat, nebo odejít.
+     *
+     * @param sousedniProstor
+     * @return zpávu podle hráčovi volby
+     */
     public String odemykaniChodby(Prostor sousedniProstor){
         Scanner sc = new Scanner(System.in);
         System.out.println("Vchod střeží stráže. Pustí vás pokud je podplatíte, zahrajete si s nimi" +
@@ -128,12 +144,19 @@ public class PrikazJdi implements IPrikaz {
         return "Chodba odemčena \n" + sousedniProstor.dlouhyPopis() + "\n" + sousedniProstor.vypisSeznamuVeci() + "\n" +
                 sousedniProstor.vypisSeznamuPostav();
     }
+
+    /**
+     * Metoda třikrát projede cyklus během, kterého má hráč pokaždé 50% šanci na smrt.
+     * Pokud přežije chodba se otevře, pokud ne hra končí.
+     *
+     * @return boolean podle toh zda je živý nebo ne.
+     */
     public boolean ruskaRuleta(){
         Scanner sc = new Scanner(System.in);
         for(int i=0; i < 3; i++) {
             System.out.println("výstřel " + (i+1) + "/3 (zmáčkni enter)");
             sc.nextLine();
-            if(PrikazPouzij.getRandomCislo(1,20)==1){
+            if(PrikazPouzij.getRandomCislo(1,2)==1){
                 System.out.println("Zabil ses.  RIP Volodoymyr Zelenskyj 1978-01-25 - " + LocalDate.now());
                 hra.setKonecHry(true);
                 return false;

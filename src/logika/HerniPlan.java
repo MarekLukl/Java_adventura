@@ -10,7 +10,7 @@ package logika;
  *  a pamatuje si aktuální prostor, ve kterém se hráč právě nachází.
  *
  *@author     Marek Lukl, Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
- *@version    pro školní rok 2016/2017
+ *@version    1.0
  */
 
 public class HerniPlan {
@@ -74,7 +74,7 @@ public class HerniPlan {
         Stráž straz3 = new Stráž("stráž3",50,7);
         Zaměstnanec prodejce = new Zaměstnanec("prodejce",35,50);
         Zaměstnanec uklizecka = new Zaměstnanec("uklízečka",20,1);
-        Boss putin = new Boss("Putin",600, 16);
+        Boss putin = new Boss("Putin",400, 16);
 
         spolecMistnost.pridejPostavu(straz1);
         spolecMistnost.pridejPostavu(straz2);

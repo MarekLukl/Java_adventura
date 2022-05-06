@@ -7,7 +7,7 @@ import java.util.Scanner;
  *  Provede interakci s použitelnou věcí v aktuálním prostoru.
  *
  *@author     Marek Lukl
- *
+ *@version  1.0
  */
 
 public class PrikazPouzij implements IPrikaz{
@@ -54,12 +54,20 @@ public class PrikazPouzij implements IPrikaz{
         return null;
     }
 
-
+    /**
+     * Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     *
+     * @return nazev prikazu
+     */
     @Override
     public String getNazev() {
         return NAZEV;
     }
 
+    /**
+     * Metoda vypíše nabídku invetáře a nechá postavu si vybrat, zda si chce něco koupit nebo odejít.
+     * Zvaliduje input a podle něj provede buď konec interakce, nebo odečtení peněz a přidání předmětu do inventáře.
+     */
     public void uzitAutomatJidlo(){
         Scanner sc = new Scanner(System.in);
         System.out.println("bageta(20hp) stojí 5 euro" + "\n" + "banán(50hp) stojí 10 euro");
@@ -79,7 +87,7 @@ public class PrikazPouzij implements IPrikaz{
                 Vec bageta = new Vec("bageta", Vec.Status.ZVEDNUTELNE,"jidlo");
                 bageta.setHp(20);
                 if(!(inventar.nakup(5,"euro"))){break;}
-                inventar.vlozitDoInvent(bageta.getNazev(),bageta);
+                inventar.getInventar().put(bageta.getNazev(),bageta);
                 System.out.println("Bageta koupena");
                 break;
             }else if(vyber.equals("2")){
@@ -90,7 +98,7 @@ public class PrikazPouzij implements IPrikaz{
                 Vec banan = new Vec("banán", Vec.Status.ZVEDNUTELNE,"jidlo");
                 banan.setHp(50);
                 if((!inventar.nakup(10,"euro"))){break;}
-                inventar.vlozitDoInvent(banan.getNazev(),banan);
+                inventar.getInventar().put(banan.getNazev(),banan);
                 System.out.println("Banán koupen");
                 break;
             }else if(vyber.equals("3")){
@@ -102,6 +110,11 @@ public class PrikazPouzij implements IPrikaz{
         System.out.println("Konec interakce s automatem");
     }
 
+    /**
+     * Metoda se zeptá jakou měnu si hráč přeje a jaké množstí. Jeho input validuje a pokud je vše správně
+     * převede rubly ne eura nebo obráceně.
+     *
+     */
     public void uzitExchangeAutomat(){
         Scanner sc = new Scanner(System.in);
         String input = "";
@@ -123,6 +136,13 @@ public class PrikazPouzij implements IPrikaz{
         }
         System.out.println("Konec interakce s exchange automatem");
     }
+
+    /**
+     * Metoda se ptá na množství požadované měny a hodnotí zda má hráč dostatečné prostředky.
+     *
+     * @param mena
+     * @return int požadované množství druhé měny
+     */
     public int pozadovanaCastka(int mena){
         Scanner sc = new Scanner(System.in);
         String input;
@@ -171,6 +191,13 @@ public class PrikazPouzij implements IPrikaz{
         }
         return pozadovanaCastka;
     }
+
+    /**
+     * Metoda zkouší převádět input ve Stringu na Integer, pokud se nepovede vrátí null
+     *
+     * @param value
+     * @return Integer požadované množství
+     */
     public Integer parseIntOrNull(String value) {
         try {
             return Integer.parseInt(value);
@@ -178,6 +205,10 @@ public class PrikazPouzij implements IPrikaz{
             return null;
         }
     }
+
+    /**
+     * Metoda hráči popíše fungování automatu a provede ho celým procesem sázení.
+     */
     public void uzitGamblingAutomat(){
         System.out.println("Vítej gamblere, tato hra funguje následovně, nejprve si vybereš kolik chceš vsadit." +
                 "\n" + "Poté si tipneš jestli náhodně vygenerované číslo bude liché nebu sudé," +
@@ -204,6 +235,12 @@ public class PrikazPouzij implements IPrikaz{
         }
         System.out.println("Konec interakce s gambling automatem.");
     }
+
+    /**
+     * Metoda se hráče ptá na výši sázené částky a číslo následně validuje.
+     *
+     * @return int vsazená částka
+     */
     public int sazenaCastka(){
         Scanner sc = new Scanner(System.in);
         boolean konec = false;
@@ -226,6 +263,12 @@ public class PrikazPouzij implements IPrikaz{
         }
         return castka;
     }
+
+    /**
+     * Metoda se hráče ptá na výběr strany na vsazení a dává mu možnost od sázky ustoupit.
+     *
+     * @return String vybraná strana
+     */
     public String vyberStrany(){
         Scanner sc = new Scanner(System.in);
         String strana = "";
@@ -239,6 +282,13 @@ public class PrikazPouzij implements IPrikaz{
         }
         return strana;
     }
+
+    /**
+     * Metoda vyhodnocuje zda si hráč vsadil správně a podle výsledku buď zdvojnásobuje vsazené peníze nebo je odečítá.
+     *
+     * @param sazenaCastka
+     * @param vybranaStrana
+     */
     public void gamble(int sazenaCastka, String vybranaStrana){
         int randomCislo = getRandomCislo(1, 100);
         System.out.println("Výsledné číslo je: " + randomCislo);
@@ -253,10 +303,22 @@ public class PrikazPouzij implements IPrikaz{
         }
     }
 
+    /**
+     * Metoda vrací random zaokrouhlené číslo v rozmezí, které se určí vloženými parametry.
+     *
+     * @param min
+     * @param max
+     * @return int random zaokrouhlené číslo
+     */
     public static int getRandomCislo(int min, int max) {
         return (int) Math.round(((Math.random() * (max - min)) + min));
     }
 
+    /**
+     * Metoda hráči nabízí pokračovat v sázení nebo odejít
+     *
+     * @return hráčovo rozhodnutí o pokračování v sázení
+     */
     public boolean pokracovatGamble(){
         Scanner sc = new Scanner(System.in);
         System.out.println("pro konec napiš '1'   pro pokračování cokoliv jiného: ");

@@ -22,14 +22,16 @@ public class Inventar {
         return inventar;
     }
 
-    public static void vlozitDoInvent (String nazevVeci, Vec vec){
-        inventar.put(nazevVeci, vec);
-    }
-
     public void odebratZInvent(String nazev){
         inventar.remove(nazev);
     }
 
+    /**
+     * Vrátí vypsaný inventář, s ždádanými atributy u jednotlivých věcí.
+     * Damage u zbraní, hp u jídla a ochrany a množství u peněz.
+     *
+     * @return String výpis inventáře
+     */
     public String vypisInventare(){
         String celyInventar = "";
         for(String s: Inventar.inventar.keySet()) {
@@ -37,7 +39,7 @@ public class Inventar {
                 celyInventar += inventar.get(s).getNazev() + "(" + inventar.get(s).getMnozstvi() + ")" + " ";
             } else if (inventar.get(s).getTyp().equals("zbran")) {
                 celyInventar += inventar.get(s).getNazev() + "(" + inventar.get(s).getDamage() + " damage)" + " ";
-            } else if (inventar.get(s).getTyp().equals("jidlo")) {
+            } else if (inventar.get(s).getTyp().equals("jidlo") || inventar.get(s).getTyp().equals("ochrana")) {
                 celyInventar += inventar.get(s).getNazev() + "(" + inventar.get(s).getHp() + " hp)" + " ";
             } else{
                 celyInventar += inventar.get(s).getNazev() + " ";
@@ -46,12 +48,24 @@ public class Inventar {
         return "Tvůj inventář: " + celyInventar;
     }
 
+    /**
+     * Vrátí věc z inventáře, pokud v inventáří není vrátí null
+     *
+     * @param nazev
+     * @return null nebo věc
+     */
     public Vec getVec(String nazev) {
         if (inventar.containsKey(nazev)) {
             return inventar.get(nazev);
         }
         return null;
     }
+
+    /**
+     * Metoda vypíše kolik euro a rublů más v inventáři.
+     *
+     * @return String o stavu peněženky
+     */
     public static String getStavPenezenky(){
         String stavPenezenky = "";
         if (Inventar.inventar.get("euro").getMnozstvi()==0 && Inventar.inventar.get("rubly").getMnozstvi()==0) {
@@ -68,6 +82,13 @@ public class Inventar {
         }
         return  stavPenezenky;
     }
+
+    /**
+     * Metoda určí zda máš dostatek peněz na nákup, pokud ano odečte od nich cenu kupovaného zboží.
+     * @param cena
+     * @param mena
+     * @return boolean podle toho zda má dostatek peněz nebo ne
+     */
     public static boolean nakup(int cena, String mena){
         if(!(Inventar.inventar.containsKey(mena))){
             System.out.println("Nemáš " + mena);

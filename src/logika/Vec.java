@@ -6,7 +6,8 @@ package logika;
  *
  *  Tato třída je součástí jednoduché textové hry.
  *
- *@author     Marek Lukl
+ * @author     Marek Lukl
+ * @version    1.0
  */
 
 public class Vec {
@@ -34,6 +35,13 @@ public class Vec {
 
     public void setMnozstvi(int mnozstvi) {this.mnozstvi = mnozstvi;}
 
+    /**
+     * Metoda přidá atribut množství k aktuálnímu množství dané věci.
+     *
+     * @param inventar
+     * @param mnozstvi
+     * @param nazevMeny
+     */
     public void upravitMnozstvi(Inventar inventar, int mnozstvi, String nazevMeny){
         inventar.getVec(nazevMeny).setMnozstvi(inventar.getVec(nazevMeny)
                 .getMnozstvi()+ mnozstvi);
@@ -45,6 +53,11 @@ public class Vec {
         return STATUS;
     }
 
+    /**
+     * Metoda vrátí zda je možné věci zvednout nebo ne.
+     *
+     * @return zvednutelnost věci
+     */
     public boolean lzeVzit (){
         if(getStatus() == Status.ZVEDNUTELNE){
             return true;
@@ -52,6 +65,11 @@ public class Vec {
         return false;
     }
 
+    /**
+     * Metoda vrátí zda je možné danou věc použít.
+     *
+     * @return použitelnost věci
+     */
     public boolean lzePouzit (){
         if(getStatus() == Status.POUZITELNE){
             return true;

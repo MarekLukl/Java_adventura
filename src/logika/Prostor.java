@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * si prostor ukládá odkaz na sousedící prostor.
  *
  * @author Marek Lukl, Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
- * @version pro školní rok 2016/2017
+ * @version    1.0
  */
 public class Prostor {
 
@@ -176,6 +176,11 @@ public class Prostor {
         return Collections.unmodifiableCollection(vychody);
     }
 
+    /**
+     * Metoda vypíše jaké věci se v prostoru nachází, plus jejich důležité atributy.
+     *
+     * @return vypis věcí v prostoru
+     */
     public String vypisSeznamuVeci() {
         String seznam1 = "";
         String seznam2 = " ";
@@ -196,6 +201,12 @@ public class Prostor {
         seznam2 = seznam1.substring(0, seznam1.length()-1);
         return "V místnosti je:" + seznam2;
     }
+
+    /**
+     * Metoda vypíše, které postavy se v místnosti nacházejí, pokud se jedná o bojovné postavy. Vypíše jejich damage a hp.
+     *
+     * @return seznam postav v místnosti
+     */
     public String vypisSeznamuPostav(){
         if(seznamPostav.size()==0){
             return "Nikdo tu není.";
@@ -213,6 +224,13 @@ public class Prostor {
         String  seznam2 =  seznam1.substring(0, seznam1.length()-1);
         return seznam2;
     }
+
+    /**
+     * Metoda vrátí věc pokud ji seznam věcí v místnoti má. Pokud ne vráti null.
+     *
+     * @param nazevVeci
+     * @return věc z místnosti nebo null
+     */
     public Vec getVec(String nazevVeci) {
         if (seznamVeci.containsKey(nazevVeci)) {
             return seznamVeci.get(nazevVeci);
@@ -227,7 +245,12 @@ public class Prostor {
     public void pridejPostavu(Postava postava){seznamPostav.put(postava.getNazev(), postava);}
 
     public Map<String, Postava> getSeznamPostav() {return seznamPostav;}
-
+    /**
+     * Metoda vrátí postavu pokud je v dané místnoti. Pokud ne vráti null.
+     *
+     * @param key
+     * @return věc z místnosti nebo null
+     */
     public Postava getPostavu(String key) {
         for(String s: seznamPostav.keySet()){
             if(key.equals(s)){

@@ -1,5 +1,14 @@
 package logika;
-
+/**
+ *  Class Stráž - třída představuje postavu stráže.
+ *
+ *  Dědí ze třídy Postava.
+ *  Nedeklaruje žádné nové atributy, všechny dědí z Postavy.
+ *  Přepisuje metodu superschopnost pro stráž.
+ *
+ *@author     Marek Lukl
+ *@version    1.0
+ */
 public class Stráž extends Postava{
 
     public Stráž(String nazev, int hp, int damage) {
