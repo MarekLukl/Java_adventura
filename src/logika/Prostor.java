@@ -198,7 +198,7 @@ public class Prostor {
     }
     public String vypisSeznamuPostav(){
         if(seznamPostav.size()==0){
-            return "Nikdo tu není";
+            return "Nikdo tu není.";
         }
         String seznam1 = "Osoby v místnosti: ";
         for(String s: seznamPostav.keySet()){

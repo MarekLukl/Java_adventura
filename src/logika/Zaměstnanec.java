@@ -7,9 +7,6 @@ public class Zaměstnanec extends Postava{
 
     @Override
     public void superschopnost(Postava postava) {
-
-    }
-    public void superschopnost(Postava postava, String string) {
-
+        System.out.println("Zaměstnanci nemají superschopnost.");
     }
 }

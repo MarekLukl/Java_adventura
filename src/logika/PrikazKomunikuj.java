@@ -33,7 +33,7 @@ public class PrikazKomunikuj implements IPrikaz{
         Prostor prostor = hra.getHerniPlan().getAktualniProstor();
         Postava postava = prostor.getPostavu(nazevPostavy);
         if(!prostor.getSeznamPostav().containsKey(nazevPostavy)){
-            return "Tato postava v této místnosti není." + prostor.vypisSeznamuPostav();
+            return "Tato postava v této místnosti není." + "\n" + prostor.vypisSeznamuPostav();
         }else{
             komunikace(postava);
         }

@@ -151,7 +151,7 @@ public class PrikazPouzij implements IPrikaz{
             }
         }
         else if (mena == 2){
-            int maxRublu = (int) Math.round((inventar.getVec("euro").getMnozstvi())* 100);
+            int maxRublu = Math.round((inventar.getVec("euro").getMnozstvi())* 100);
             System.out.println("Kolik rublů chceš? Maximálně: " + maxRublu);
             while(nesplneno){
                 input = sc.nextLine();

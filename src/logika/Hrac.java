@@ -8,9 +8,9 @@ package logika;
  */
 
 public class Hrac extends Postava{
-    private static int hp = 100;
-    private static int maxHp = 100;
-    private static int damage = 100;
+    private int hp = 101;
+    private int maxHp = 100;
+    private int damage = 100;
 
     public Hrac(String nazev,int hp, int damage) {
         super(nazev, hp, damage);
@@ -38,11 +38,11 @@ public class Hrac extends Postava{
         }
     }
 
-    public static int getMaxHp() {
+    public int getMaxHp() {
         return maxHp;
     }
 
-    public static void setMaxHp(int maxHp) {
-        Hrac.maxHp = maxHp;
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
     }
 }

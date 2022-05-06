@@ -17,6 +17,7 @@ public class Hra implements IHra {
     private HerniPlan herniPlan;
     private boolean konecHry = false;
     private Inventar inventar;
+    private Hrac hrac;
     /**
      *  Vytváří hru a inicializuje místnosti (prostřednictvím třídy HerniPlan) a seznam platných příkazů.
      */
@@ -24,7 +25,7 @@ public class Hra implements IHra {
         herniPlan = new HerniPlan();
         platnePrikazy = new SeznamPrikazu();
         inventar = new Inventar();
-        Hrac hrac = new Hrac("hráč",100,100);
+        hrac = new Hrac("hráč",100,100);
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy, herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazJdi(herniPlan, inventar, this));
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
@@ -125,6 +126,13 @@ public class Hra implements IHra {
     public Inventar getInventar(){
         return inventar;
     }
-    
+
+    public SeznamPrikazu getPlatnePrikazy() {
+        return platnePrikazy;
+    }
+
+    public Hrac getHrac() {
+        return hrac;
+    }
 }
 
