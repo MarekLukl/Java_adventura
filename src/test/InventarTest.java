@@ -11,13 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class InventarTest {
     private Hra hra;
-    private Hrac hrac;
     private Inventar inventar;
 
     @Before
     public void setUp() {
         hra = new Hra();
-        hrac = new Hrac("hráč",100,100);
         inventar = new Inventar();
     }
 

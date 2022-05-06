@@ -8,17 +8,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class HracTest {
     private Hra hra;
-    private Hrac hrac;
+
 
     @Before
     public void setUp() {
         hra = new Hra();
-        hrac = new Hrac("hráč",100,100);
     }
     @Test
     public void změnaHp(){
-        hrac.setHp(50);
-        hrac.upravitHp(20);
-        assertEquals(70,hrac.getHp());
+        hra.getHrac().setHp(50);
+        hra.getHrac().upravitHp(20);
+        assertEquals(70,hra.getHrac().getHp());
     }
 }
