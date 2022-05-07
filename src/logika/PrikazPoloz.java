@@ -22,6 +22,7 @@ public class PrikazPoloz implements IPrikaz{
     /**
      * Odebere věc z inventáře.
      * Zabrání v polození peněz, sníží damage pokud hráč polozil svou nejsilnější zbraň.
+     *
      * @param parametry - jako  parametr obsahuje název věci co má polozit.
      * @return zprávu o polození
      */

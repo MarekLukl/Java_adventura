@@ -15,7 +15,7 @@ public class HracTest {
         hra = new Hra();
     }
     @Test
-    public void změnaHp(){
+    public void zmenaHp(){
         hra.getHrac().setHp(50);
         hra.getHrac().upravitHp(20);
         assertEquals(70,hra.getHrac().getHp());
