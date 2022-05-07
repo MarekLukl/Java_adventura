@@ -1,21 +1,21 @@
 package logika;
 /**
- *  Class Stráž - třída představuje postavu stráže.
+ *  Class straz - třída představuje postavu straze.
  *
  *  Dědí ze třídy Postava.
  *  Nedeklaruje žádné nové atributy, všechny dědí z Postavy.
- *  Přepisuje metodu superschopnost pro stráž.
+ *  Přepisuje metodu superschopnost pro straz.
  *
  *@author     Marek Lukl
  *@version    1.0
  */
-public class Stráž extends Postava{
+public class Straz extends Postava{
 
-    public Stráž(String nazev, int hp, int damage) {
+    public Straz(String nazev, int hp, int damage) {
         super(nazev, hp, damage);
     }
     /**
-     *Stráž má každé kolo 20% šanci, že se mu zvedne damage o 2
+     *straz má každé kolo 20% šanci, že se mu zvedne damage o 2
      *
      *@param postava
      */

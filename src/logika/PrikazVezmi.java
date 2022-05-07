@@ -38,7 +38,7 @@ public class PrikazVezmi implements IPrikaz {
         Prostor prostor = hra.getHerniPlan().getAktualniProstor();
         Vec vec = prostor.getVec(nazevVeci);
         if(inventar.getInventar().size()>5){
-            return "Uneseš jen 4 věci (kromě peněz) musíš něco položit";
+            return "Uneseš jen 4 věci (kromě peněz) musíš něco polozit";
         }
         if(vec == null){
             return "Taková věc v této místnosti není." + "\n" + prostor.dlouhyPopis();

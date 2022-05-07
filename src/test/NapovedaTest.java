@@ -33,6 +33,6 @@ public class NapovedaTest {
                 + platnePrikazy.vratNazvyPrikazu() + "\n"
                 + prostor.dlouhyPopis() + "\n"
                 + prostor.vypisSeznamuVeci() + "\n"
-                + prostor.vypisSeznamuPostav(),hra.zpracujPrikaz("nápověda"));
+                + prostor.vypisSeznamuPostav(),hra.zpracujPrikaz("napoveda"));
     }
 }

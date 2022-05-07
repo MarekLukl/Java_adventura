@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 /**
- *  Třída PrikazUtok implementuje pro hru příkaz útoč.
+ *  Třída PrikazUtok implementuje pro hru příkaz utoc.
  *  Tato třída je součástí jednoduché textové hry.
  *  Vybrané postavě sníží hp o aktuální damage postavy.
  *  Napadené postavy následně snižují hp hráče, podle výše svého damage.
@@ -15,7 +15,7 @@ import java.util.*;
 
 public class PrikazUtok implements IPrikaz{
 
-    private static final String NAZEV = "útoč";
+    private static final String NAZEV = "utoc";
     private Hra hra;
     private Hrac hrac;
     private HerniPlan plan;
@@ -27,7 +27,7 @@ public class PrikazUtok implements IPrikaz{
     }
 
     /**
-     *  Zjistí zda si zadal na koho útočit a zda se postava vyskytuje v aktuálním prostoru.
+     *  Zjistí zda si zadal na koho utocit a zda se postava vyskytuje v aktuálním prostoru.
      *  Vybrané postavě sníží hp o aktuální damage postavy.
      *  Napadené postavy následně snižují hp hráče, podle výše svého damage.
      *
@@ -37,7 +37,7 @@ public class PrikazUtok implements IPrikaz{
     public String provedPrikaz(String... parametry) {
         if (parametry.length == 0) {
             // pokud chybí druhé slovo (sousední prostor), tak ....
-            return "Nádherný útok, ale musíš si nejdříve vybrat na koho budeš útočit";
+            return "Nádherný útok, ale musíš si nejdříve vybrat na koho budeš utocit";
         }
         String nazevPostavy = parametry[0];
         Prostor prostor = hra.getHerniPlan().getAktualniProstor();
@@ -65,7 +65,7 @@ public class PrikazUtok implements IPrikaz{
      * Metoda odečte od postavy hráčův damage, vrátí výší jejího hp, v případě dosažení nuly postavu odebere.
      * Dále odebírá damage všech postav v místnosti od hráčova hp. A kontroluje zda je stále na živu.
      * Volá metodu superschopnost jednotlivých postav.
-     * Pokud všechny stráže zemřou otevře chodbu.
+     * Pokud všechny straze zemřou otevře chodbu.
      * Pokud zabiješ uklízečku vypadne z ní kód k otevření komnaty.
      *
      * @param seznamPostav
@@ -83,14 +83,14 @@ public class PrikazUtok implements IPrikaz{
              System.out.println(nazevPostavy + " je zneškodněn");
              seznamPostav.remove(nazevPostavy);
 
-             //pokud jsou všechny stráže mrtvé, chodba se otveře
-             if(seznamPostav.isEmpty() && prostor.getNazev().equals("společenská_místnost")){
+             //pokud jsou všechny straze mrtvé, chodba se otveře
+             if(seznamPostav.isEmpty() && prostor.getNazev().equals("spolecenska_mistnost")){
                  Prostor sousedniProstor = plan.getAktualniProstor().vratSousedniProstor("chodba");
                  sousedniProstor.setZamceno(false);
                  System.out.println("Vstup do chodby je volný");
              }
              // pokud zabiješ uklízečku vypadne z ní kód ke komnatě
-             if(nazevPostavy.equals("uklízečka")){
+             if(nazevPostavy.equals("uklizecka")){
                  System.out.println("Zabil si nevinnou uklízečku a vypadl jí z kapsy paírek s číslem '42069'.");
              }
              // pokud porazíš Putina, dá ti možnost volby co s ním
@@ -112,8 +112,8 @@ public class PrikazUtok implements IPrikaz{
                  hra.setKonecHry(true);
                  return true;
              }
-             // zavolá strážníkovu superschopnost
-             if(seznamPostav.get(s).getClass() == Stráž.class){
+             // zavolá strazníkovu superschopnost
+             if(seznamPostav.get(s).getClass() == Straz.class){
                  seznamPostav.get(s).superschopnost(seznamPostav.get(s));
              }
              // zavolá superschopnost bosse

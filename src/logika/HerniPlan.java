@@ -30,9 +30,9 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor vstupniHala = new Prostor("vstupní_hala","rudá vstupní hala", false);
-        Prostor satna = new Prostor("šatna", "smrdutá šatna",false);
-        Prostor spolecMistnost = new Prostor("společenská_místnost","společenská místnost pro volné chvíle ruských bratrů", false);
+        Prostor vstupniHala = new Prostor("vstupni_hala","rudá vstupní hala", false);
+        Prostor satna = new Prostor("satna", "smrdutá satna",false);
+        Prostor spolecMistnost = new Prostor("spolecenska_mistnost","společenská místnost pro volné chvíle ruských bratrů", false);
         Prostor toalety = new Prostor("toalety","voňavé toalety", false);
         Prostor chodba = new Prostor("chodba","prázdná chodba",true);
         Prostor sklad = new Prostor("sklad","poloprázdný sklad se sovětskou technikou", false);
@@ -59,21 +59,23 @@ public class HerniPlan {
         pistol.setDamage(20);
         Vec euro = new Vec("euro", Vec.Status.ZVEDNUTELNE,"penize");
         euro.setMnozstvi(100);
-        Vec automatNaJidlo = new Vec("automat_na_jídlo", Vec.Status.POUZITELNE,"stroj");
+        Vec voda = new Vec("voda", Vec.Status.ZVEDNUTELNE,"jidlo");
+        Vec automatNaJidlo = new Vec("automat_na_jidlo", Vec.Status.POUZITELNE,"stroj");
         Vec automatNaSmenu = new Vec("exchange_automat", Vec.Status.POUZITELNE,"stroj");
         Vec automatNaGamble = new Vec("gambling_automat", Vec.Status.POUZITELNE,"stroj");
 
         vstupniHala.pridejVec(automatNaJidlo);
         satna.pridejVec(euro);
         satna.pridejVec(pistol);
+        spolecMistnost.pridejVec(voda);
         spolecMistnost.pridejVec(automatNaGamble);
         toalety.pridejVec(automatNaSmenu);
 
-        Stráž straz1 = new Stráž("stráž1",40,5);
-        Stráž straz2 = new Stráž("stráž2",40,6);
-        Stráž straz3 = new Stráž("stráž3",50,7);
-        Zaměstnanec prodejce = new Zaměstnanec("prodejce",35,50);
-        Zaměstnanec uklizecka = new Zaměstnanec("uklízečka",20,1);
+        Straz straz1 = new Straz("straz1",40,5);
+        Straz straz2 = new Straz("straz2",40,6);
+        Straz straz3 = new Straz("straz3",50,7);
+        Zamestnanec prodejce = new Zamestnanec("prodejce",35,50);
+        Zamestnanec uklizecka = new Zamestnanec("uklizecka",20,1);
         Boss putin = new Boss("Putin",400, 16);
 
         spolecMistnost.pridejPostavu(straz1);

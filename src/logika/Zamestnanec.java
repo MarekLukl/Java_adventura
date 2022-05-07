@@ -1,6 +1,6 @@
 package logika;
 /**
- *  Class Zaměstnanec - třída představuje postavu zaměstnance.
+ *  Class Zamestnanec - třída představuje postavu zaměstnance.
  *
  *  Dědí ze třídy Postava.
  *  Nedeklaruje žádné nové atributy, všechny dědí z Postavy.
@@ -9,8 +9,8 @@ package logika;
  *@author     Marek Lukl
  *@version    1.0
  */
-public class Zaměstnanec extends Postava{
-    public Zaměstnanec(String nazev, int hp, int damage) {
+public class Zamestnanec extends Postava{
+    public Zamestnanec(String nazev, int hp, int damage) {
         super(nazev, hp, damage);
     }
 

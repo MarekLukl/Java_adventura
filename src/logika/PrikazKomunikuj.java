@@ -61,7 +61,7 @@ public class PrikazKomunikuj implements IPrikaz{
      * @param postava
      */
     public void komunikace(Postava postava){
-        if(postava.getNazev().equals("uklízečka")){
+        if(postava.getNazev().equals("uklizecka")){
             komunikaceSUklízečkou();
         }else if(postava.getNazev().equals("prodejce")){
             komunikaceSProdavačem();
@@ -89,7 +89,7 @@ public class PrikazKomunikuj implements IPrikaz{
         spravneSerazeni.add("AK-47");
         Collections.sort(spravneSerazeni);
 
-        System.out.println("Uklízečka je celá zoufalá z toho že má setřídit zbraně podle abecedy. Pomůžeš jí? \n");
+        System.out.println("uklizecka je celá zoufalá z toho že má setřídit zbraně podle abecedy. Pomůžeš jí? \n");
 
         while(!konec){
             System.out.println("jedná se o: 'Negev' 'Makarov' 'SG-43' 'Uzi' 'AK-47' " +
@@ -97,9 +97,9 @@ public class PrikazKomunikuj implements IPrikaz{
 
             Vector<String> pokusRazeni = new Vector<>(razeniZbrani(sc.nextLine()));
             if(pokusRazeni.equals(spravneSerazeni)){
-                System.out.println("Správně, uklízečka ti jako znamení vděku pošeptala číslo '42069'. Prý se ti bude hodit.");
+                System.out.println("Správně, uklizecka ti jako znamení vděku pošeptala číslo '42069'. Prý se ti bude hodit.");
                 //po předání informace uklízečku odstraní
-                hra.getHerniPlan().getAktualniProstor().getSeznamPostav().remove("uklízečka");
+                hra.getHerniPlan().getAktualniProstor().getSeznamPostav().remove("uklizecka");
                 konec = true;
             }else if(pokusRazeni.get(0).equals("1")){
                 konec = true;
@@ -212,7 +212,7 @@ public class PrikazKomunikuj implements IPrikaz{
      */
     public String vyberNakupu(){
         if(inventar.getInventar().size()>5){
-            System.out.println("Uneseš jen 4 věci (kromě peněz) musíš něco položit");
+            System.out.println("Uneseš jen 4 věci (kromě peněz) musíš něco polozit");
             return "1";
         }
         Scanner sc = new Scanner(System.in);

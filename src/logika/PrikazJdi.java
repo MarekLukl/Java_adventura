@@ -109,7 +109,7 @@ public class PrikazJdi implements IPrikaz {
      */
     public String odemykaniChodby(Prostor sousedniProstor){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Vchod střeží stráže. Pustí vás pokud je podplatíte, zahrajete si s nimi" +
+        System.out.println("Vchod střeží straze. Pustí vás pokud je podplatíte, zahrajete si s nimi" +
                 "\n" + "ruskou ruletu a nebo pokud je odstraníte.");
         boolean konec;
         do{
@@ -132,7 +132,7 @@ public class PrikazJdi implements IPrikaz {
                 konec = true;
             }else if(input.equals("3")){
                 Prostor prostor = plan.getAktualniProstor();
-                return "Vyber si na koho zaútočíš jako první. Zadej příkaz \"útoč\" a jméno stráže" + prostor.vypisSeznamuPostav();
+                return "Vyber si na koho zautocíš jako první. Zadej příkaz \"utoc\" a jméno straze" + prostor.vypisSeznamuPostav();
             }else if(input.equals("4")){
                 return "Odešel si";
             }else{

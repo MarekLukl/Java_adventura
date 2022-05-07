@@ -2,7 +2,7 @@ package logika;
 
 import java.util.Scanner;
 /**
- *  Třída PrikazPouzij implementuje pro hru příkaz použij.
+ *  Třída PrikazPouzij implementuje pro hru příkaz pouzij.
  *  Tato třída je součástí jednoduché textové hry.
  *  Provede interakci s použitelnou věcí v aktuálním prostoru.
  *
@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class PrikazPouzij implements IPrikaz{
 
-    private static final String NAZEV = "použij";
+    private static final String NAZEV = "pouzij";
     private Inventar inventar;
     private Hra hra;
 
@@ -31,7 +31,7 @@ public class PrikazPouzij implements IPrikaz{
     @Override
     public String provedPrikaz(String... parametry) {
         if(parametry.length == 0){
-            return "Výborný \"použij\" ale co??";
+            return "Výborný \"pouzij\" ale co??";
         }
         String nazevVeci = parametry[0];
         Prostor prostor = hra.getHerniPlan().getAktualniProstor();
@@ -41,7 +41,7 @@ public class PrikazPouzij implements IPrikaz{
                     prostor.vypisSeznamuVeci();
         } else if(vec.lzePouzit()){
 
-            if(vec.getNazev()=="automat_na_jídlo"){
+            if(vec.getNazev()=="automat_na_jidlo"){
                 uzitAutomatJidlo();
             }else if(vec.getNazev()=="exchange_automat"){
                 uzitExchangeAutomat();
@@ -70,12 +70,12 @@ public class PrikazPouzij implements IPrikaz{
      */
     public void uzitAutomatJidlo(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("bageta(20hp) stojí 5 euro" + "\n" + "banán(50hp) stojí 10 euro");
+        System.out.println("bageta(20hp) stojí 5 euro" + "\n" + "banan(50hp) stojí 10 euro");
         if(inventar.getInventar().size()>5){
-            System.out.println("Uneseš jen 4 věci (kromě peněz) musíš něco položit");
+            System.out.println("Uneseš jen 4 věci (kromě peněz) musíš něco polozit");
             return;
         }
-        System.out.println("Pro koupi bagety napiště '1' pro koupi banánu napiště '2' pro konec nákupu napište '3'");
+        System.out.println("Pro koupi bagety napiště '1' pro koupi bananu napiště '2' pro konec nákupu napište '3'");
         String vyber ="";
         while(!(vyber.equals("3"))){
             vyber = sc.nextLine();
@@ -91,15 +91,15 @@ public class PrikazPouzij implements IPrikaz{
                 System.out.println("Bageta koupena");
                 break;
             }else if(vyber.equals("2")){
-                if(inventar.getInventar().containsKey("banán")){
-                    System.out.println("Můžeš mít jen jeden banán.");
+                if(inventar.getInventar().containsKey("banan")){
+                    System.out.println("Můžeš mít jen jeden banan.");
                     break;
                 }
-                Vec banan = new Vec("banán", Vec.Status.ZVEDNUTELNE,"jidlo");
+                Vec banan = new Vec("banan", Vec.Status.ZVEDNUTELNE,"jidlo");
                 banan.setHp(50);
                 if((!inventar.nakup(10,"euro"))){break;}
                 inventar.getInventar().put(banan.getNazev(),banan);
-                System.out.println("Banán koupen");
+                System.out.println("banan koupen");
                 break;
             }else if(vyber.equals("3")){
                 break;

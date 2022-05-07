@@ -214,7 +214,7 @@ public class Prostor {
         String seznam1 = "Osoby v místnosti: ";
         for(String s: seznamPostav.keySet()){
             // pokud se jedná o zaměstnance vypíše jen jméno
-            if(seznamPostav.get(s).getClass().equals(Zaměstnanec.class)){
+            if(seznamPostav.get(s).getClass().equals(Zamestnanec.class)){
                 seznam1 += " " + seznamPostav.get(s).getNazev() + ",";
             }else{
                 seznam1 += " " + seznamPostav.get(s).getNazev() +

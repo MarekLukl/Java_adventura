@@ -1,7 +1,7 @@
 package logika;
 
 /**
- *  Třída PrikazSnez implementuje pro hru příkaz sněz.
+ *  Třída PrikazSnez implementuje pro hru příkaz snez.
  *  Tato třída je součástí jednoduché textové hry.
  *  Odebere vybranou věc (jídlo) z inventáře a podle hp dané věci zvýší aktuální hp
  *
@@ -11,7 +11,7 @@ package logika;
 
 public class PrikazSnez implements IPrikaz{
 
-    private static final String NAZEV = "sněz";
+    private static final String NAZEV = "snez";
     private Hra hra;
     private Hrac hrac;
     private Inventar inventar;

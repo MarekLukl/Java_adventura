@@ -14,7 +14,7 @@ interface IPrikaz {
      *  Metoda pro provedení příkazu ve hře.
      *  Počet parametrů je závislý na konkrétním příkazu,
      *  např. příkazy konec a napoveda nemají parametry
-     *  příkazy jdi, seber, polož mají jeden parametr
+     *  příkazy jdi, seber, poloz mají jeden parametr
      *  
      *  @param parametry počet parametrů závisí na konkrétním příkazu.
      *  

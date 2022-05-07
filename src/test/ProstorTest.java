@@ -9,7 +9,7 @@ public class ProstorTest {
     @Before
     public void setUp() {
         hra = new Hra();
-        hra.zpracujPrikaz("jdi společenská_místnost");
+        hra.zpracujPrikaz("jdi spolecenska_mistnost");
     }
 
     @After
@@ -20,6 +20,6 @@ public class ProstorTest {
     @Test
     public void dlouhyPopis() {
         assertEquals("Jsi v mistnosti/prostoru společenská místnost pro volné chvíle ruských bratrů." + "\n"
-                + "východy: toalety chodba vstupní_hala", hra.getHerniPlan().getAktualniProstor().dlouhyPopis());
+                + "východy: toalety chodba vstupni_hala", hra.getHerniPlan().getAktualniProstor().dlouhyPopis());
     }
 }

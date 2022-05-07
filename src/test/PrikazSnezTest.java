@@ -21,18 +21,18 @@ public class PrikazSnezTest {
     @Test
     public void nemasJidlo() {
         assertEquals("Takové jídlo nemáš" + "\n" + hra.getInventar().vypisInventare(),
-                hra.zpracujPrikaz("sněz jídlo"));
+                hra.zpracujPrikaz("snez jídlo"));
     }
     @Test
     public void snezeniJidla() {
-        Vec banan = new Vec("banán", Vec.Status.ZVEDNUTELNE,"jidlo");
+        Vec banan = new Vec("banan", Vec.Status.ZVEDNUTELNE,"jidlo");
         banan.setHp(50);
-        hra.getInventar().getInventar().put("banán",banan);
+        hra.getInventar().getInventar().put("banan",banan);
         hra.getHrac().setHp(20);
-        assertEquals("Tvé hp: 70", hra.zpracujPrikaz("sněz banán"));
+        assertEquals("Tvé hp: 70", hra.zpracujPrikaz("snez banan"));
     }
     @Test
     public void neuplnyPrikaz() {
-        assertEquals("Copak by jsi rád papinkal?", hra.zpracujPrikaz("sněz"));
+        assertEquals("Copak by jsi rád papinkal?", hra.zpracujPrikaz("snez"));
     }
 }

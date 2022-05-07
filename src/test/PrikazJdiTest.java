@@ -18,10 +18,10 @@ public class PrikazJdiTest {
 
     @Test
     public void premisteni() {
-        // začíná se ve vstupní hale; jdi šatna
-       assertEquals("Jsi v mistnosti/prostoru smrdutá šatna." + "\n" + "východy: vstupní_hala" + "\n"
-               + "V místnosti je: euro(100), pistol(20 damage)" + "\n" + "Nikdo tu není.", hra.zpracujPrikaz("jdi šatna"));
+        // začíná se ve vstupní hale; jdi satna
+       assertEquals("Jsi v mistnosti/prostoru smrdutá satna." + "\n" + "východy: vstupni_hala" + "\n"
+               + "V místnosti je: euro(100), pistol(20 damage)" + "\n" + "Nikdo tu není.", hra.zpracujPrikaz("jdi satna"));
        assertFalse(hra.konecHry());
-       assertEquals("šatna", hra.getHerniPlan().getAktualniProstor().getNazev());
+       assertEquals("satna", hra.getHerniPlan().getAktualniProstor().getNazev());
     }
 }

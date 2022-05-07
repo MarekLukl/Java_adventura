@@ -19,6 +19,6 @@ public class PrikazUtokTest {
     @Test
     public void chybejiciBojovnik() {
         assertEquals("Tato postava v této místnosti není."
-                + hra.getHerniPlan().getAktualniProstor().vypisSeznamuPostav(), hra.zpracujPrikaz("útoč postava"));
+                + hra.getHerniPlan().getAktualniProstor().vypisSeznamuPostav(), hra.zpracujPrikaz("utoc postava"));
     }
 }

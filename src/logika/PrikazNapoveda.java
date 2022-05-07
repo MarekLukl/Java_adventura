@@ -1,7 +1,7 @@
 package logika;
 
 /**
- *  Třída PrikazNapoveda implementuje pro hru příkaz nápověda.
+ *  Třída PrikazNapoveda implementuje pro hru příkaz napoveda.
  *  Tato třída je součástí jednoduché textové hry.
  *
  *@author     Marek Lukl, Jarmila Pavlickova, Luboš Pavlíček
@@ -10,7 +10,7 @@ package logika;
  */
 public class PrikazNapoveda implements IPrikaz {
     
-    private static final String NAZEV = "nápověda";
+    private static final String NAZEV = "napoveda";
     private SeznamPrikazu platnePrikazy;
     private HerniPlan plan;
     
@@ -20,7 +20,7 @@ public class PrikazNapoveda implements IPrikaz {
     *
       * @param platnePrikazy seznam příkazů,
       *                       které je možné ve hře použít,
-      *                       aby je nápověda mohla zobrazit uživateli.
+      *                       aby je napoveda mohla zobrazit uživateli.
       * @param plan
       */
     public PrikazNapoveda(SeznamPrikazu platnePrikazy, HerniPlan plan) {

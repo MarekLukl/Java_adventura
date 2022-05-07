@@ -25,7 +25,7 @@ public class Hra implements IHra {
         herniPlan = new HerniPlan();
         platnePrikazy = new SeznamPrikazu();
         inventar = new Inventar();
-        hrac = new Hrac("hráč",100,10);
+        hrac = new Hrac("Zelenskyj",100,10);
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy, herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazJdi(herniPlan, inventar, this));
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
@@ -36,7 +36,7 @@ public class Hra implements IHra {
         platnePrikazy.vlozPrikaz(new PrikazPoloz(inventar,this,hrac));
         platnePrikazy.vlozPrikaz(new PrikazKomunikuj(inventar,this, hrac));
 
-        //vložení rublů a euro do inventáře, ale v množství 0
+        //vložení rublů a euro do inventáře
         Vec euro = new Vec("euro", Vec.Status.ZVEDNUTELNE,"penize");
         Vec rubly = new Vec("rubly", Vec.Status.ZVEDNUTELNE,"penize");
         euro.setMnozstvi(0);
@@ -53,7 +53,7 @@ public class Hra implements IHra {
                "Vaše jméno je Volodymyr Zelenskyj. \n" +
                 "Nacházíte se v protiatomovém krytu na severu Ruska, ve kterém se ukrývá Vladimír Putin. \n" +
                 "Vaším cílem je speciální vojenskou operací denacifikovat tento kryt a osvobodit ho od již zmiňovaného diktátora.\n" +
-               "Napište 'nápověda', pokud si nevíte rady, jak hrát dál.\n" +
+               "Napište 'napoveda', pokud si nevíte rady, jak hrát dál.\n" +
                "\n" +
                herniPlan.getAktualniProstor().dlouhyPopis();
     }
