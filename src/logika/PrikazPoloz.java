@@ -21,7 +21,7 @@ public class PrikazPoloz implements IPrikaz{
 
     /**
      * Odebere věc z inventáře.
-     * Zabrání v polození peněz, sníží damage pokud hráč polozil svou nejsilnější zbraň.
+     * Zabrání v polození peněz, sníží damage pokud hráč polozil svou nejsilnější zbran.
      *
      * @param parametry - jako  parametr obsahuje název věci co má polozit.
      * @return zprávu o polození
@@ -42,7 +42,7 @@ public class PrikazPoloz implements IPrikaz{
             if(vec.getTyp()=="penize"){
                 return "Peníze nepokládej, místo ti nezabírají a někdo by ti je mohl vzít.";
             }
-            //pokud se jedná o zbraň, s momentálně největším damagem, naství damage na základních 10 a hledá zda má další zbraň
+            //pokud se jedná o zbran, s momentálně největším damagem, naství damage na základních 10 a hledá zda má další zbran
             else if(vec.getTyp()=="zbran"){
                 if(hrac.getDamage()==vec.getDamage()){
                     hrac.setDamage(10);

@@ -21,7 +21,7 @@ public class HraTest {
         assertEquals("Vítejte!\n" +
                 "Vaše jméno je Volodymyr Zelenskyj. \n" +
                 "Nacházíte se v protiatomovém krytu na severu Ruska, ve kterém se ukrývá Vladimír Putin. \n" +
-                "Vaším cílem je speciální vojenskou operací denacifikovat tento kryt a osvobodit ho od již zmiňovaného diktátora.\n" +
+                "Vaším cílem je speciální vojenskou operací denacifikovat tento kryt a osvobodit ho od již zminovaného diktátora.\n" +
                 "Napište 'napoveda', pokud si nevíte rady, jak hrát dál.\n" +
                 "\n" +
                 hra.getHerniPlan().getAktualniProstor().dlouhyPopis(), hra.vratUvitani());

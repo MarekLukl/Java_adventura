@@ -33,7 +33,7 @@ public class HerniPlan {
         Prostor vstupniHala = new Prostor("vstupni_hala","rudá vstupní hala", false);
         Prostor satna = new Prostor("satna", "smrdutá satna",false);
         Prostor spolecMistnost = new Prostor("spolecenska_mistnost","společenská místnost pro volné chvíle ruských bratrů", false);
-        Prostor toalety = new Prostor("toalety","voňavé toalety", false);
+        Prostor toalety = new Prostor("toalety","vonavé toalety", false);
         Prostor chodba = new Prostor("chodba","prázdná chodba",true);
         Prostor sklad = new Prostor("sklad","poloprázdný sklad se sovětskou technikou", false);
         Prostor zbrojnice = new Prostor("zbrojnice","zbrojnice s možností zakoupit si zbraně",false);

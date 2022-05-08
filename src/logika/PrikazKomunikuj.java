@@ -3,7 +3,7 @@ package logika;
 import java.util.*;
 /**
  *  Třída PrikazKomunikuj implementuje pro hru příkaz komunikuj.
- *  Umožňuje interakci s některou z postav.
+ *  Umožnuje interakci s některou z postav.
  *
  *@author     Marek Lukl
  *@version    1.0
@@ -114,7 +114,7 @@ public class PrikazKomunikuj implements IPrikaz{
      * porovnávat se správným řešením.
      *
      * @param radek
-     * @return Vector<String> pokus o seřazení
+     * @return  pokus o serazeni
      */
     public Vector<String> razeniZbrani(String radek){
         String [] slova = radek.split("[ \t]+");
@@ -164,7 +164,7 @@ public class PrikazKomunikuj implements IPrikaz{
     /**
      * Metoda vytvoří nabídku zbrojnice, v podobě HashpMapy a tu pak vrátí.
      *
-     * @return HashMap<String,vec> naplněná nabídkou zbrojnice
+     * @return naplnená nabídkou zbrojnice
      */
     public HashMap<String,Vec> getNabidkaZbrojnice(){
         HashMap<String,Vec> nabidka = new HashMap<>();
@@ -261,7 +261,7 @@ public class PrikazKomunikuj implements IPrikaz{
 
     /**
      * Metoda odečte cenu zboží z tvých peněz a přidá ti zboží do inventáře.
-     * Zkontroluju jestli se jedná o silnější zbraň než už máš a popřípadě zvedne damage.
+     * Zkontroluju jestli se jedná o silnější zbran než už máš a poprípadě zvedne damage.
      * Pokud se jedná o chraný předmět, zvedne tvé maximální Hp.
      * @param zbozi
      */

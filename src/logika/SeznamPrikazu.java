@@ -57,7 +57,7 @@ public class SeznamPrikazu {
     /**
      * Kontroluje, zda zadaný řetězec je přípustný příkaz.
      *
-     *@param  retezec  Řetězec, který se má otestovat, zda je přípustný příkaz
+     *@param  retezec  Retězec, který se má otestovat, zda je prípustný prikaz
      *@return          Vrací hodnotu true, pokud je zadaný
      *                     řetězec přípustný příkaz
      */
@@ -68,7 +68,7 @@ public class SeznamPrikazu {
     /**
      *  Vrací seznam přípustných příkazů, jednotlivé příkazy jsou odděleny mezerou.
      *  
-     *  @return     Řetězec, který obsahuje seznam přípustných příkazů
+     *  @return     Retězec, který obsahuje seznam prípustných príkazů
      */
     public String vratNazvyPrikazu() {
         String seznam = "";

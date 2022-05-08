@@ -23,7 +23,7 @@ public class Straz extends Postava{
     public void superschopnost(Postava postava) {
         if(PrikazPouzij.getRandomCislo(1,5)==1){
             postava.setDamage(postava.getDamage() + 2);
-            System.out.println(postava.getNazev() + " si vzal silnější zbraň a zvedl se mu damage o 2");
+            System.out.println(postava.getNazev() + " si vzal silnější zbran a zvedl se mu damage o 2");
         }
     }
 }
