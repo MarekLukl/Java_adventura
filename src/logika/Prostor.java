@@ -25,7 +25,8 @@ public class Prostor {
     private Map<String, Postava> seznamPostav;
 
     /**
-     * Vytvoreni prostoru se zadanym popisem
+     * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
+     * před domem"
      *  @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.

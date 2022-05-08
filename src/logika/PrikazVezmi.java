@@ -25,7 +25,7 @@ public class PrikazVezmi implements IPrikaz {
     /**
      *  Zjistí zda si zadal co vzít, jestli je daná věc v akutálním prostoru a jestli se dá vzít.
      *  Pokud ano přidá ji do inventáře a odebere z prostoru.
-     *  Pokud se jedná o penize zvedne jejich mnozství ve tvem inventárí. Pokud jde o silnější zbran zvedne damage postavy
+     *  Pokud se jedná o pěníze zvedne jejích množství ve tvém inventáří. Pokud jde o silnější zbraň zvedne damage postavy
      *
      * @param parametry počet parametrů závisí na konkrétním příkazu.
      */

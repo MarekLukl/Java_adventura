@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  *  Třída PrikazJdi implementuje pro hru příkaz jdi.
  *  Mění aktuální polohu.
- *  Vyhodnocuje zda do dane mistnosti hrác muze jít. Reší odemykání uzamknutých místností.
+ *  Vyhodnocuje zda do dané místností hráč může jít. Řeší odemykání uzamknutých místností.
  *  
  *@author     Marek Lukl, Jarmila Pavlickova, Luboš Pavlíček
  *@version    1.0
@@ -73,7 +73,7 @@ public class PrikazJdi implements IPrikaz {
     /**
      *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *  
-     *  @return nazev prikazu
+     *  @ return nazev prikazu
      */
     @Override
     public String getNazev() {

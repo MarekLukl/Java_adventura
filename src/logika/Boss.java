@@ -1,8 +1,8 @@
 package logika;
 /**
- *  Class Boss - trida predstavuje postavu Bosse
+ *  Class Boss - třída představuje postavu Bosse
  *
- *  Dedi ze tridy Postava.
+ *  Dědí ze třídy Postava.
  *  Inicializuje vlastní atribut pro ukládání počtu odbojovaných kol.
  *  Přepisuje metodu superschopnost pro bosse. Ta proběhne každé 4. kolo souboje.
  *
@@ -19,7 +19,7 @@ public class Boss extends Postava{
     /**
      * Pokud se jedná o 4 kolo souboje zvedne bossovi hp o 10%
      *
-     *@param postava bosse
+     *@param postava
      */
 
     @Override
